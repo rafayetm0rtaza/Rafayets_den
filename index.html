@@ -8,36 +8,43 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
-    <title>Electrical Engineering Portfolio</title>
+    
+    <title>Rafayet's Lab</title>
+    <link rel="icon" type="image/jpg" href="assets/icon5.jpg">
+
+    
     <style>
         /* Global Styles */
         :root {
-            --primary-color: #4361ee;
-            --text-color: #333;
-            --bg-color: #f5f5f5;
-            --card-bg: #ffffff;
-            --border-color: #e0e0e0;
-            --heading-color: #222;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        [data-theme="dark"] {
-            --primary-color: #4cc9f0;
-            --text-color: #e0e0e0;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --border-color: #333;
-            --heading-color: #f5f5f5;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        [data-theme="dark"] .logo {
-    background: linear-gradient(45deg, #4cc9f0, #4361ee);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    --primary-color: #4DA674;
+    --text-color: #023336;
+    --bg-color: #EAF8E7;
+    --card-bg: #C1E6BA;
+    --border-color: #4DA674;
+    --heading-color: #023336;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
 }
+
+[data-theme="dark"] {
+    --primary-color: #80ed99;
+    --text-color: #eaf8e7;
+    --bg-color: #023336;
+    --card-bg: #035045;
+    --border-color: #4DA674;
+    --heading-color: #80ed99;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s ease;
+}
+
+     /* If you want a gradient effect in dark mode */
+[data-theme="dark"] .logo {
+  background: linear-gradient(45deg, var(--primary-color), #4da674);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 
         * {
             margin: 0;
@@ -173,13 +180,17 @@ section h2:hover::after {
 }
 
 .msu-logo {
-    width: 65px; /* Adjust size */
+    width: 65px;
     height: auto;
-    margin-left: 10px; /* Adds spacing */
-    vertical-align: middle; /* Aligns with text */
+    margin-left: 10px;
+    vertical-align: middle;
+    filter: none; /* Default filter for light mode */
+    transition: var(--transition); /* Add the same transition as other elements */
 }
 
-
+[data-theme="dark"] .msu-logo {
+    filter: brightness(0) invert(1); /* This makes the logo white */
+}
 
 
 
@@ -510,14 +521,21 @@ section h2:hover::after {
 }
 
 .project-tag {
-  background-color: #f0f4ff;
-  color: #4263eb;
+  background-color: var(--card-bg);     /* or var(--bg-color) */
+  color: var(--primary-color);
   padding: 6px 12px;
   border-radius: 4px;
   font-size: 14px;
+  transition: var(--transition);
+  outline: 2px solid var(--primary-color);
+}
+.project-tag:hover {
+  background-color: var(--primary-color);
+  color: #fff; /* or var(--bg-color) for contrast */
 }
 
-        /* Contact Section */
+
+        /* Contact Section
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -561,7 +579,106 @@ section h2:hover::after {
         .contact-link {
             color: var(--primary-color);
             text-decoration: none;
-        }
+        } */
+
+   /* Make sure your color variables have been updated as shown above */
+
+/* Example: give the contact section a subtle gradient background */
+#contact {
+    padding: 60px 20px;
+    border-radius: 8px;
+    background: linear-gradient(
+        135deg, 
+        var(--card-bg) 0%, 
+        var(--bg-color) 100%
+    );
+    box-shadow: var(--shadow);
+}
+
+/* Tweak the form container */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 30px;
+    transition: var(--transition);
+}
+
+.contact-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.contact-form h3 {
+    font-size: 1.8rem;
+    color: var(--heading-color);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Subheading */
+.contact-form .form-subtitle {
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.9;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form fields */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 8px rgba(77, 166, 116, 0.3);
+}
+
+/* Button */
+.contact-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.contact-form button:hover {
+    background-color: #3b8e5d; /* Slightly darker than --primary-color */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(77, 166, 116, 0.3);
+}
+
 
         /* Mobile Styles */
         @media (max-width: 768px) {
@@ -673,7 +790,7 @@ section h2:hover::after {
     <main>
         <!-- Hero Section -->
         <section class="hero" data-aos="fade-up" data-aos-delay="250">
-            <img src="prof.jpeg" alt="Profile Photo" class="profile-img" >
+            <img src="assets/prof.jpeg" alt="Profile Photo" class="profile-img" >
             <div>
                 <h1>Rafayet Murtaza</h1>
                 <p>Electrical Engineering Student </p>
@@ -718,7 +835,7 @@ section h2:hover::after {
         <section id="experience" class="container">
             <h2>Experience</h2>
             <div class="timeline">
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="150">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="250">
                     <div class="timeline-content">
                         <span class="timeline-date">November 2023 - Present</span>
                         <h3>Student Clerical Assistant</h3>
@@ -734,7 +851,7 @@ section h2:hover::after {
                         <p>Working on renewable energy systems research, focusing on efficiency improvements in solar panel design. Conducting experiments and collecting data for performance analysis.</p>
                     </div>
                 </div> -->
-                <div class="timeline-item" data-aos="fade-left" data-aos-delay="150">
+                <div class="timeline-item" data-aos="fade-left" data-aos-delay="250">
                     <div class="timeline-content">
                         <span class="timeline-date">June 2022 - August 2022</span>
                         <h3>Data Analysis Intern </h3>
@@ -747,30 +864,39 @@ section h2:hover::after {
 
         <!-- Education Section -->
         <section id="education" class="container">
-            <h2>Education<img src="spartan.png" alt="MSU LOGO" class="msu-logo"></h2>
+            <h2>Education<img src="assets/spartan.png" alt="MSU LOGO" class="msu-logo"></h2>
             <div class="education-cards" >
                 <div class="education-card" data-aos="fade-right">
                     <h3>Michigan State University</h3>
-                    <div class="degree">Bachelor of Science in Electrical Engineering</div>
+                    <div class="degree">Bachelor of Science in Computer Engineering</div>
                     <div class="education-date">Expected Graduation: August 2027</div>
-                    <p>Relevant Coursework:</p>
+                    <p>Clubs :</p>
                     <ul>
-                        <li>Circuit Analysis</li>
-                        <li>Digital Logic Design</li>
-                        <li>Signals and Systems</li>
-                        <li>Microprocessor Systems</li>
-                        <li>Electromagnetic Fields</li>
+                        <p>MSU Cybersecurity Club</p>
+                        <p>Student Trading Club</li>
+                        <p>Sparta hacks</li>
+                        <!-- <li>Microprocessor Systems</li>
+                        <li>Electromagnetic Fields</li> -->
                     </ul>
+                    <br>
                     <p>GPA: 3.6/4.0</p>
                 </div>
                 <div class="education-card" data-aos="fade-left">
                     <h3>Certifications</h3>
                     <div>
-                        <p><strong>Arduino Fundamentals</strong></p>
+                        <p><strong>Duke of Edinburgh's Award (Bronze)</strong></p>
+                        <p class="education-date">2022</p>
+                    </div>
+                    <div>
+                        <p><strong>Duke of Edinburgh's Award (Silver)
+
+                        </strong></p>
                         <p class="education-date">2023</p>
                     </div>
                     <div>
-                        <p><strong>PCB Design Essentials</strong></p>
+                        <p><strong>Mathematics Regional Olympiad
+
+                        </strong></p>
                         <p class="education-date">2023</p>
                     </div>
                 </div>
@@ -786,15 +912,15 @@ section h2:hover::after {
                 <div class="swiper-slide">
                   <div class="project-card">
                     <div class="image-container">
-                      <img src="proj1.jpg" alt="Automated Irrigation System" class="project-img">
+                      <img src="assets/proj1.jpg" alt="Automated Irrigation System" class="project-img">
                     </div>
                     <div class="project-info">
                       <h3 class="project-title">Discord Python Bot</h3>
-                      <p class="project-description">Designed and built a soil moisture monitoring system that automatically waters plants when soil becomes dry. Implemented with Arduino, moisture sensors, and a water pump control system.</p>
+                      <p class="project-description"> I developed a Python-based Discord bot to enhance server functionality. I implemented various commands and features, improving user engagement. I demonstrated strong problem-solving skills and meticulous attention to detail.</p>
                       <div class="project-tags">
-                        <span class="project-tag">Arduino</span>
-                        <span class="project-tag">Sensors</span>
-                        <span class="project-tag">Automation</span>
+                        <span class="project-tag">Python</span>
+                        <!-- <span class="project-tag">Javascript</span> -->
+                        <span class="project-tag">API</span>
                       </div>
                     </div>
                   </div>
@@ -804,15 +930,16 @@ section h2:hover::after {
                 <div class="swiper-slide" data-aos="fade-down">
                   <div class="project-card">
                     <div class="image-container">
-                      <img src="proj2.jpg" alt="Solar-Powered LED Lighting" class="project-img">
+                      <img src="assets/proj2.jpg" alt="Solar-Powered LED Lighting" class="project-img">
                     </div>
                     <div class="project-info">
-                      <h3 class="project-title">Solar-Powered LED Lighting</h3>
-                      <p class="project-description">Created an efficient solar charging system for outdoor LED lighting. Designed the power management circuit and implemented light sensors for automatic operation at dusk.</p>
+                      <h3 class="project-title">Portfolio Website</h3>
+                      <p class="project-description">I constructed my portfolio website using HTML for the foundational structure, CSS for comprehensive styling, and JavaScript to implement interactive features like a theme toggle. The site also features a dynamic project slider powered by Swiper.js and subtle animations using the AOS library, all contributing to an engaging user experience.
+                    </p>
                       <div class="project-tags">
-                        <span class="project-tag">Solar Power</span>
-                        <span class="project-tag">Circuit Design</span>
-                        <span class="project-tag">Power Management</span>
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">Javascript</span>
                       </div>
                     </div>
                   </div>
@@ -822,15 +949,17 @@ section h2:hover::after {
                 <div class="swiper-slide" data-aos="fade-left">
                   <div class="project-card">
                     <div class="image-container">
-                      <img src="proj3.jpg" alt="Digital Oscilloscope" class="project-img">
+                      <img src="assets/shelter.jpg" alt="Digital Oscilloscope" class="project-img">
                     </div>
                     <div class="project-info">
-                      <h3 class="project-title">Basic Digital Oscilloscope</h3>
-                      <p class="project-description">Developed a simple digital oscilloscope using a microcontroller and LCD display. Capable of measuring frequency and amplitude of input signals up to 50kHz.</p>
+                      <h3 class="project-title">ShelterMeon</h3>
+                      <p class="project-description"> ShelterMEON is a project developed at Cal Hacks 11.0 that uses AI, including Gemini AI and Vapi, to help people experiencing homelessness find nearby shelters. It leverages technologies like the MERN stack, Deepgram for speech-to-text, and Fetch.ai for real-time map updates, aiming to provide a user-friendly and dynamic platform. The team overcame challenges with new AI technologies and team coordination to deliver a functional solution, with plans to expand its reach beyond San Francisco.
+                    </p>
                       <div class="project-tags">
-                        <span class="project-tag">Signal Processing</span>
-                        <span class="project-tag">Microcontroller</span>
-                        <span class="project-tag">Instrumentation</span>
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Javascript</span>
+                        <span class="project-tag">API</span>
+                        <span class="project-tag">FullStack</span>
                       </div>
                     </div>
                   </div>
@@ -840,15 +969,16 @@ section h2:hover::after {
                 <div class="swiper-slide" data-aos="fade-left">
                   <div class="project-card">
                     <div class="image-container">
-                      <img src="proj4.jpg" alt="Test" class="project-img">
+                      <img src="assets/proj3.jpg" alt="Test" class="project-img">
                     </div>
                     <div class="project-info">
-                      <h3 class="project-title">Test</h3>
-                      <p class="project-description">Developed a simple digital oscilloscope using a microcontroller and LCD display. Capable of measuring frequency and amplitude of input signals up to 50kHz.</p>
+                      <h3 class="project-title">Phone case design</h3>
+                      <p class="project-description">I utilized Fusion 360 to design a custom phone case, gaining hands-on experience in 3D modeling and CAD software. This project allowed me to understand basics of CAD designs and also transform it into a usable product
+                    </p>
                       <div class="project-tags">
-                        <span class="project-tag">Signal Processing</span>
-                        <span class="project-tag">Microcontroller</span>
-                        <span class="project-tag">Instrumentation</span>
+                        <span class="project-tag">Fusion360</span>
+                        <!-- <span class="project-tag">Javascript</span>
+                        <span class="project-tag">Instrumentation</span> -->
                       </div>
                     </div>
                   </div>
@@ -862,7 +992,7 @@ section h2:hover::after {
             </div>
           </section>
 
-        <!-- Contact Section -->
+        <!-- Contact Section
         <section id="contact" class="container" data-aos="fade-up">
             <h2>Contact</h2>
             <div class="contact-container">
@@ -891,15 +1021,39 @@ section h2:hover::after {
                 </div>
             </div>
         </section>
-    </main>
+    </main> -->
+
+       <!-- New Contact Form -->
+    <section id="contact">
+       <div class="contact-form" data-aos="fade-up" data-aos-delay="250">
+        <h3>Want to get in touch?</h3>
+        <p class="form-subtitle">Feel free to reach out! I'll get back to you as soon as possible.</p>
+        <form action="https://formspree.io/f/xyzkropj" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+            </div>
+            <button type="submit" class="cta-button">Send Message</button>
+        </form>
+    </div>
+</div>
+</section>
 
     <!-- Footer -->
     <footer>
         <div class="social-links">
-            <a href="https://github.com/rafayetm0rtaza" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/feed/" class="social-icon"><i class="fa-brands fa-linkedin"></i>
+            <a href="https://github.com/rafayetm0rtaza" target="blank" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/sardar-rafayet-bin-murtaza-b6a9b31b3/" target="blank" class="social-icon"><i class="fa-brands fa-linkedin"></i>
             </a>
-            <a href="https://www.instagram.com/rafayet.murtaza/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.instagram.com/rafayet.murtaza/" target= "blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
         </div>
         <p>&copy; 2025 Sardar Rafayet Bin Murtaza. All rights reserved.</p>
     </footer>
