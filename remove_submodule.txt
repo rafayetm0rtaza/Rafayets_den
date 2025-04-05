@@ -1,0 +1,15 @@
+# This is a temporary file that indicates we should remove any submodule references
+# The issue in your GitHub Pages build is that your repository has a reference to a Git submodule
+# with the path 'Rafayets_den', but there's no corresponding entry in a .gitmodules file.
+# 
+# To fix this issue, you'll need to:
+# 1. Clone the repository locally
+# 2. Remove the submodule reference with git commands
+# 3. Push the changes back to GitHub
+#
+# Local commands to run:
+# git clone https://github.com/rafayetm0rtaza/Rafayets_den.git
+# cd Rafayets_den
+# git rm --cached Rafayets_den (if this directory exists)
+# git commit -m "Remove incorrect submodule reference"
+# git push
