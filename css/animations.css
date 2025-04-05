@@ -1,0 +1,85 @@
+/* Animation and Transition Styles */
+
+/* Smooth transitions for various elements */
+.logo,
+.nav-links a,
+.cta-button,
+.skill-tag,
+.timeline-content,
+.education-card,
+.project-card,
+.social-icon,
+.contact-form,
+.form-group input,
+.form-group textarea,
+.contact-form button {
+    transition: var(--transition);
+}
+
+/* Hover animations */
+.logo:hover {
+    transform: scale(1.05);
+    text-shadow: 0 3px 10px rgba(67, 97, 238, 0.5);
+}
+
+.logo:hover::after {
+    width: 80%;
+}
+
+section h2:hover::after {
+    width: 100%;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.skill-tag:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.social-icon:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.project-tag:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.contact-form button:hover {
+    background-color: #3b8e5d; /* Slightly darker than --primary-color */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(77, 166, 116, 0.3);
+}
+
+/* Focus states for form elements */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 8px rgba(77, 166, 116, 0.3);
+}
