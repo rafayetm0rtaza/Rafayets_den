@@ -1,0 +1,125 @@
+/* Responsive Styles */
+
+/* Base responsive container */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    /* Timeline adjustments for mobile */
+    .timeline::after {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    
+    .timeline-item::after {
+        left: 21px;
+    }
+    
+    .timeline-item:nth-child(odd)::after {
+        right: auto;
+        left: 21px;
+    }
+    
+    /* Stack about content vertically on mobile */
+    .about-content {
+        flex-direction: column;
+    }
+
+    /* Adjust navigation for mobile */
+    .nav-links {
+        gap: 10px;
+    }
+
+    /* Reduce padding on header */
+    nav {
+        padding: 10px 15px;
+    }
+
+    /* Make hero section more compact */
+    .hero {
+        padding: 40px 0;
+    }
+
+    /* Reduce profile image size */
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Adjust hero text size */
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Adjust section padding */
+    section {
+        padding: 40px 0;
+    }
+
+    /* Adjust section headings */
+    section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    /* Further reduce padding */
+    .hero {
+        padding: 30px 0;
+    }
+
+    /* Stack buttons in hero section */
+    .button-group {
+        flex-direction: column;
+    }
+
+    /* Smaller profile image */
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    /* Smaller text */
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Adjust project cards padding */
+    .project-info {
+        padding: 15px;
+    }
+}
+
+/* Tablet and larger screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Adjust container max-width */
+    .container {
+        max-width: 90%;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1025px) {
+    /* Potentially increase container size */
+    .container {
+        max-width: 1200px;
+    }
+}
