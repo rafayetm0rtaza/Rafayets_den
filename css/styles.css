@@ -70,36 +70,28 @@ nav {
     margin: 0 auto;
 }
 
+/* Logo image */
 .logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color); /* Adapts to theme */
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
     transition: var(--transition);
 }
 
-.logo:hover {
+.logo-img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.logo:hover .logo-img {
     transform: scale(1.05);
-    text-shadow: 0 3px 10px rgba(67, 97, 238, 0.5);
+    box-shadow: 0 3px 10px rgba(77, 166, 116, 0.4);
 }
 
-.logo::after {
-    content: "";
-    width: 50%;
-    height: 3px;
-    background: var(--primary-color);
-    position: absolute;
-    bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 2px;
-    transition: var(--transition);
-}
-
-/* Add this to your CSS stylesheet */
+/* Section headings */
 section h2 {
     font-size: 2rem;
     color: var(--heading-color);
@@ -120,19 +112,14 @@ section h2::after {
     transition: width 0.3s ease;
 }
 
-/* Add this new hover effect */
 section h2:hover::after {
     width: 100%;
 }
 
-.logo:hover::after {
-    width: 80%;
-}
-
-.education-header { 
-  display: inline-flex;
-  align-items: center; 
-  justify-content: flex-start; /* Align items to the left */
+.education-header {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .msu-logo {
@@ -140,8 +127,8 @@ section h2:hover::after {
     height: auto;
     margin-left: 10px;
     vertical-align: middle;
-    filter: none; /* Default filter for light mode */
-    transition: var(--transition); /* Add the same transition as other elements */
+    filter: none;
+    transition: var(--transition);
 }
 
 .nav-links {
@@ -240,24 +227,6 @@ section {
     padding: 60px 0;
 }
 
-section h2 {
-    font-size: 2rem;
-    color: var(--heading-color);
-    margin-bottom: 30px;
-    position: relative;
-    display: inline-block;
-}
-
-section h2::after {
-    content: '';
-    position: absolute;
-    width: 50%;
-    height: 3px;
-    background-color: var(--primary-color);
-    bottom: -10px;
-    left: 0;
-}
-
 /* About Section */
 .about-content {
     display: flex;
@@ -327,4 +296,3 @@ footer {
     background-color: var(--primary-color);
     color: white;
 }
-
