@@ -183,13 +183,19 @@ section h2:hover::after {
     gap: 20px;
 }
 
+/* Hero logo image — no circle crop, clean display */
 .profile-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--primary-color);
-    box-shadow: var(--shadow);
+    width: 200px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: contain;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+}
+
+.profile-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 28px rgba(77, 166, 116, 0.35);
 }
 
 .hero h1 {
