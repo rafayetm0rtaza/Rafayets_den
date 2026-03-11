@@ -1,6 +1,6 @@
 # 🌐 Rafayet's Den - Portfolio Website
 
-![Portfolio Preview](assets/icon3.jpg)
+![Portfolio Preview](assets/Logo_New.jpg)
 
 A modern, responsive portfolio website showcasing my projects, skills and professional journey.
 
