@@ -53,6 +53,7 @@
 .timeline-content {
     padding: 20px;
     background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: var(--shadow);
     transition: var(--transition);
@@ -72,6 +73,7 @@
 
 .education-card {
     background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 25px;
     box-shadow: var(--shadow);
@@ -108,9 +110,10 @@
   flex-direction: column;
   height: 100%;
   box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
-  background-color: var(--card-bg); /* Use dynamic background */
+  background-color: var(--card-bg);
 }
 
 .project-img {
@@ -153,13 +156,14 @@
 }
 
 .project-tag {
-  background-color: var(--card-bg);     /* or var(--bg-color) */
+  background-color: var(--bg-color);
   color: var(--primary-color);
-  padding: 6px 12px;
+  padding: 5px 11px;
   border-radius: 4px;
   font-size: 14px;
+  font-weight: 500;
   transition: var(--transition);
-  outline: 2px solid var(--primary-color);
+  border: 1px solid var(--primary-color);
 }
 
 /* Contact Section Styles */

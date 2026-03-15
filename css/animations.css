@@ -19,7 +19,6 @@
 /* Hover animations */
 .logo:hover {
     transform: scale(1.05);
-    text-shadow: 0 3px 10px rgba(67, 97, 238, 0.5);
 }
 
 .logo:hover::after {
@@ -71,9 +70,9 @@ section h2:hover::after {
 }
 
 .contact-form button:hover {
-    background-color: #3b8e5d; /* Slightly darker than --primary-color */
+    background-color: var(--primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(77, 166, 116, 0.3);
+    box-shadow: 0 5px 10px rgba(24, 69, 59, 0.25);
 }
 
 /* Focus states for form elements */
@@ -81,5 +80,5 @@ section h2:hover::after {
 .form-group textarea:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 8px rgba(77, 166, 116, 0.3);
+    box-shadow: 0 0 0 3px rgba(24, 69, 59, 0.12);
 }
