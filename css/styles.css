@@ -1,12 +1,13 @@
 /* Global Styles */
 :root {
-    --primary-color: #4DA674;
-    --text-color: #023336;
-    --bg-color: #EAF8E7;
-    --card-bg: #C1E6BA;
-    --border-color: #4DA674;
-    --heading-color: #023336;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --primary-color: #18453B;
+    --primary-hover: #1f5c4e;
+    --text-color: #1a1a1a;
+    --bg-color: #F9FAFB;
+    --card-bg: #FFFFFF;
+    --border-color: #e5e7eb;
+    --heading-color: #111827;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
     --transition: all 0.3s ease;
 }
 
@@ -14,7 +15,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
