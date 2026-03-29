@@ -1,334 +1,1346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafayet Murtaza — Electrical Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="icon" type="image/jpg" href="assets/Logo_New.jpg">
+<style>
+  :root {
+    --bg:      #F5F0E8;
+    --surface: #EDE8DC;
+    --card:    #E4DDD0;
+    --border:  #CEC3AF;
+    --accent:  #7C6148;
+    --accent2: #A07850;
+    --accent3: #7A9A64;
+    --text:    #1E1915;
+    --muted:   #8A7A6A;
+    --mono:    'Share Tech Mono', monospace;
+    --display: 'Bebas Neue', sans-serif;
+    --body:    'DM Sans', sans-serif;
+  }
 
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/dark-theme.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
-    <title>Rafayet's Den</title>
-    <link rel="icon" type="image/jpg" href="assets/Logo_New.jpg">
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transition: transform 0.18s ease, opacity 0.2s, width 0.2s, height 0.2s;
+    opacity: 0.5;
+  }
+  .cursor-ring.hovered {
+    width: 54px; height: 54px;
+    opacity: 0.3;
+  }
+
+  /* CIRCUIT BACKGROUND */
+  .circuit-bg {
+    position: fixed; inset: 0; z-index: 0;
+    overflow: hidden; pointer-events: none;
+  }
+  .circuit-bg svg {
+    width: 100%; height: 100%;
+    opacity: 0.045;
+  }
+
+  /* GRAIN OVERLAY */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  nav.scrolled {
+    border-color: var(--border);
+    background: rgba(245, 240, 232, 0.88);
+    backdrop-filter: blur(20px);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--muted); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0; right: 100%;
+    height: 1px; background: var(--accent);
+    transition: right 0.25s ease;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { right: 0; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 60px 80px;
+    position: relative; z-index: 2;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
+
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-label::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: var(--display);
+    font-size: clamp(72px, 11vw, 160px);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero-name .line2 { color: transparent; -webkit-text-stroke: 1px var(--border); }
+  .hero-name .accent-word { color: var(--accent); -webkit-text-stroke: 0; }
+
+  .hero-desc {
+    max-width: 480px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 52px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 20px; align-items: center;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 16px 36px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(124, 97, 72, 0.28);
+  }
+
+  .btn-ghost {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 16px 36px;
+    border: 1px solid var(--border);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: absolute; bottom: 48px; left: 60px;
+    display: flex; align-items: center; gap: 16px;
+    font-family: var(--mono); font-size: 10px;
+    color: var(--muted); letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: fadeUp 0.8s 0.7s ease both;
+  }
+  .scroll-line {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    position: absolute; bottom: 48px; right: 60px;
+    display: flex; gap: 48px;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+  .stat { text-align: right; }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 42px;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--accent);
+    color: var(--bg);
+    padding: 12px 0;
+    overflow: hidden;
+    position: relative; z-index: 2;
+  }
+  .ticker-inner {
+    display: flex; gap: 60px;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-item {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 16px;
+    flex-shrink: 0;
+  }
+  .ticker-dot { width: 4px; height: 4px; background: var(--bg); border-radius: 50%; opacity: 0.6; }
+
+  /* SECTIONS */
+  section { padding: 120px 60px; position: relative; z-index: 2; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(48px, 7vw, 96px);
+    color: var(--text);
+    line-height: 0.9;
+    margin-bottom: 60px;
+  }
+
+  /* DIVIDER */
+  .h-rule {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 60px;
+    position: relative; z-index: 2;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-text p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+
+  .about-visual { position: relative; height: 480px; }
+
+  .av-card {
+    position: absolute;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+  .av-card.main {
+    top: 0; left: 0; right: 60px; bottom: 60px;
+  }
+  .av-card.accent-card {
+    bottom: 0; right: 0;
+    width: 200px; height: 200px;
+    border-color: var(--accent);
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    background: var(--surface);
+  }
+  .av-main-inner {
+    height: 100%;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+  }
+  .av-photo {
+    flex: 1;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .av-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .av-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    display: flex; justify-content: space-between;
+  }
+  .av-meta span { color: var(--accent); }
+  .av-accent-num {
+    font-family: var(--display);
+    font-size: 60px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .av-accent-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  /* SKILLS */
+  .skills-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 0;
+  }
+  .skill-card {
+    background: var(--surface);
+    padding: 40px 36px;
+    transition: background 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .skill-card:hover { background: var(--card); }
+  .skill-card:hover::before { transform: scaleX(1); }
+
+  .skill-icon {
+    font-family: var(--mono);
+    font-size: 20px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .skill-name {
+    font-family: var(--display);
+    font-size: 28px;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+  .skill-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .skill-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 20px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--bg);
+  }
+
+  /* PROJECTS */
+  .projects-list {
+    display: flex; flex-direction: column;
+    gap: 1px; background: var(--border);
+    margin-top: 0;
+  }
+  .project-item {
+    background: var(--bg);
+    display: grid;
+    grid-template-columns: 60px 110px 1fr 1fr 160px;
+    align-items: center;
+    padding: 28px 40px;
+    gap: 32px;
+    transition: background 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .project-item:hover { background: var(--card); }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .project-thumb {
+    width: 110px; height: 70px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+    transition: filter 0.3s;
+  }
+  .project-item:hover .project-thumb { filter: grayscale(0%); }
+
+  .project-name {
+    font-family: var(--display);
+    font-size: 30px;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .project-item:hover .project-name { color: var(--accent); }
+  .project-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--accent);
+    border: 1px solid rgba(124, 97, 72, 0.35);
+    padding: 6px 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    background: var(--bg);
+  }
+  .project-link {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1px;
+    letter-spacing: 0.08em;
+    display: inline-block;
+    margin-top: 6px;
+    transition: border-color 0.2s;
+  }
+  .project-link:hover { border-color: var(--accent); }
+
+  /* EXPERIENCE */
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 80px;
+    margin-top: 60px;
+  }
+  .exp-timeline { position: relative; }
+  .exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .exp-year-item {
+    padding: 0 0 40px 24px;
+    position: relative; cursor: pointer;
+  }
+  .exp-year-item::before {
+    content: '';
+    position: absolute; left: -3px; top: 8px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--muted);
+    transition: background 0.2s;
+  }
+  .exp-year-item.active::before { background: var(--accent); }
+  .exp-year {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 6px;
+  }
+  .exp-company {
+    font-family: var(--display);
+    font-size: 22px;
+    color: var(--muted);
+    transition: color 0.2s;
+    line-height: 1.1;
+  }
+  .exp-year-item.active .exp-company { color: var(--text); }
+
+  .exp-detail-item { display: none; }
+  .exp-detail-item.active { display: block; }
+
+  .exp-role {
+    font-family: var(--display);
+    font-size: 44px;
+    color: var(--text);
+    line-height: 0.95;
+    margin-bottom: 8px;
+  }
+  .exp-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .exp-body {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 16px;
+    position: relative;
+  }
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 10px;
+  }
+
+  /* EDUCATION */
+  .edu-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    margin-top: 0;
+  }
+  .edu-card {
+    background: var(--surface);
+    padding: 44px 40px;
+    transition: background 0.25s;
+  }
+  .edu-card:hover { background: var(--card); }
+  .edu-card-title {
+    font-family: var(--display);
+    font-size: 32px;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: 0.03em;
+  }
+  .edu-degree {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .edu-date {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .edu-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 8px; }
+  .edu-card strong { color: var(--text); font-weight: 500; }
+  .edu-card ul { padding-left: 0; list-style: none; }
+  .edu-card ul li {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 16px;
+    position: relative;
+  }
+  .edu-card ul li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 10px;
+  }
+  .msu-logo {
+    height: 28px; width: auto;
+    vertical-align: middle;
+    margin-left: 10px;
+    opacity: 0.75;
+  }
+  .edu-award-row {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .edu-award-row:first-child { padding-top: 0; }
+  .edu-award-title {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .edu-award-date {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: start;
+  }
+  .contact-lede {
+    font-family: var(--display);
+    font-size: clamp(48px, 6vw, 80px);
+    color: var(--text);
+    line-height: 0.95;
+    margin-bottom: 28px;
+  }
+  .contact-lede .hl { color: var(--accent); }
+  .contact-sub {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 14px;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--accent); }
+  .contact-link-icon { color: var(--accent); width: 16px; text-align: center; font-style: normal; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-field { display: flex; flex-direction: column; gap: 8px; }
+  .form-field label {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .form-field input,
+  .form-field textarea {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 300;
+    padding: 13px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+    cursor: none;
+  }
+  .form-field textarea { height: 120px; }
+  .form-field input:focus,
+  .form-field textarea:focus { border-color: var(--accent); }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: var(--muted); opacity: 0.55; }
+
+  .form-submit {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    padding: 16px 36px;
+    cursor: none;
+    align-self: flex-start;
+    transition: box-shadow 0.2s, transform 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  }
+  .form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(124, 97, 72, 0.28);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 28px 60px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    position: relative; z-index: 2;
+    background: var(--bg);
+  }
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+  }
+  .footer-copy span { color: var(--accent); }
+  .footer-social {
+    display: flex; gap: 20px;
+  }
+  .footer-social a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+  .footer-social a:hover { color: var(--accent); }
+  .footer-status {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    background: var(--accent3);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { gap: 20px; }
+    section { padding: 80px 24px; }
+    .hero { padding: 100px 24px 80px; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-visual { height: 320px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .exp-grid { grid-template-columns: 1fr; gap: 40px; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .project-item {
+      grid-template-columns: 40px 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 12px;
+    }
+    .project-thumb { display: none; }
+    .project-name { font-size: 24px; }
+    .project-desc { grid-column: 1 / -1; }
+    .project-tag { grid-column: 1 / -1; text-align: left; }
+    .stats-bar { display: none; }
+    .scroll-indicator { display: none; }
+    .h-rule { margin: 0 24px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
+  }
+  @media (max-width: 600px) {
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+    .hero-name { font-size: clamp(56px, 16vw, 96px); }
+    .skills-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 10px; }
+  }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <a href="#" class="logo">
-                <img src="assets/Logo_New.jpg" alt="Rafayet's Den Logo" class="logo-img">
-            </a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#education">Education</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Circuit Background -->
+<div class="circuit-bg">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="#7C6148" stroke-width="1">
+      <line x1="0" y1="120" x2="300" y2="120"/>
+      <circle cx="300" cy="120" r="4" fill="#7C6148"/>
+      <line x1="300" y1="120" x2="300" y2="240"/>
+      <line x1="300" y1="240" x2="600" y2="240"/>
+      <circle cx="600" cy="240" r="4" fill="#7C6148"/>
+      <line x1="600" y1="240" x2="600" y2="160"/>
+      <line x1="600" y1="160" x2="900" y2="160"/>
+      <line x1="900" y1="160" x2="900" y2="400"/>
+      <circle cx="900" cy="400" r="6" fill="#7C6148"/>
+      <line x1="900" y1="400" x2="1400" y2="400"/>
+      <line x1="0" y1="500" x2="200" y2="500"/>
+      <line x1="200" y1="500" x2="200" y2="320"/>
+      <circle cx="200" cy="320" r="4" fill="#7C6148"/>
+      <line x1="200" y1="320" x2="500" y2="320"/>
+      <line x1="500" y1="320" x2="500" y2="500"/>
+      <line x1="500" y1="500" x2="800" y2="500"/>
+      <circle cx="800" cy="500" r="4" fill="#7C6148"/>
+      <line x1="800" y1="500" x2="800" y2="620"/>
+      <line x1="800" y1="620" x2="1400" y2="620"/>
+      <line x1="0" y1="700" x2="400" y2="700"/>
+      <circle cx="400" cy="700" r="4" fill="#7C6148"/>
+      <line x1="400" y1="700" x2="400" y2="560"/>
+      <line x1="400" y1="560" x2="700" y2="560"/>
+      <line x1="700" y1="560" x2="700" y2="800"/>
+      <line x1="700" y1="800" x2="1400" y2="800"/>
+      <rect x="850" y="370" width="100" height="60"/>
+      <line x1="860" y1="370" x2="860" y2="360"/><line x1="880" y1="370" x2="880" y2="360"/>
+      <line x1="900" y1="370" x2="900" y2="360"/><line x1="920" y1="370" x2="920" y2="360"/>
+      <line x1="940" y1="370" x2="940" y2="360"/>
+      <line x1="860" y1="430" x2="860" y2="440"/><line x1="880" y1="430" x2="880" y2="440"/>
+      <line x1="900" y1="430" x2="900" y2="440"/><line x1="920" y1="430" x2="920" y2="440"/>
+      <line x1="940" y1="430" x2="940" y2="440"/>
+      <rect x="150" y="280" width="80" height="80"/>
+      <circle cx="190" cy="320" r="20" stroke="#7C6148" fill="none"/>
+    </g>
+  </svg>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">RM<span>/</span>EE</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Electrical Engineering — Michigan State University</div>
+    <h1 class="hero-name">
+      Rafayet<br>
+      <span class="line2">Mur<span class="accent-word">taza</span></span>
+    </h1>
+    <p class="hero-desc">
+      Building circuits from first principles — from closed-loop op-amp motor controllers and FPGA ALU implementations to full-stack AI-powered web apps. Analog and digital, hardware and software. Class of 2027.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="assets/resume.pdf" download class="btn-ghost">Download Resume</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">4<span>+</span></div>
+      <div class="stat-label">Projects</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3<span>+</span></div>
+      <div class="stat-label">Work Roles</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">27<span>'</span></div>
+      <div class="stat-label">Class of</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-item"><span class="ticker-dot"></span> Analog Circuit Design</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> FPGA Development</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> HDL / Verilog</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> Op-Amp Design</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> Python</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> Full-Stack Web</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> MATLAB</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> API Integration</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> LTspice</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> Git / GitHub</div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker-item"><span class="ticker-dot"></span> Analog Circuit Design</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> FPGA Development</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> HDL / Verilog</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> Op-Amp Design</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> Python</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> Full-Stack Web</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> MATLAB</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> API Integration</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> LTspice</div>
+    <div class="ticker-item"><span class="ticker-dot"></span> Git / GitHub</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">// 01 — About</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-title">Who<br>I Am</div>
+        <p>I'm an Electrical Engineering student at Michigan State University with a deep interest in analog/digital circuit design, embedded systems, and full-stack development. <strong>I believe great engineering lives at the intersection of hardware intuition and software precision.</strong></p>
+        <p>My work spans from designing a 3-stage op-amp motor controller with a 555-timer PWM generator to implementing an 8-bit ALU in Verilog on an FPGA — and building full-stack web apps in between. I'm equally comfortable reading a datasheet as I am debugging a React component.</p>
+        <p>Currently diving deeper into FPGA development and web engineering. Always eager to learn, build, and collaborate on things that matter.</p>
+      </div>
+      <div class="about-visual">
+        <div class="av-card main">
+          <div class="av-main-inner">
+            <div class="av-photo">
+              <img src="assets/Logo_New.jpg" alt="Rafayet Murtaza">
             </div>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                <div class="toggle-circle"></div>
-            </button>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="hero" data-aos="fade-up" data-aos-delay="250">
-            <img src="assets/Logo_New.jpg" alt="Rafayet Murtaza Logo" class="profile-img">
-            <div>
-                <h1>Rafayet Murtaza</h1>
-                <p>Electrical Engineering Student</p>
-                <a href="#contact" class="cta-button">Get In Touch</a>
-                <a href="assets/resume.pdf" download class="cta-button resume-button">
-                    <i class="fas fa-download"></i> Download Resume
-                </a>
+            <div class="av-meta">
+              <span>East Lansing, MI</span>
+              <span><span>●</span> MSU Class of 2027</span>
             </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="container" data-aos="fade-up" data-aos-delay="250">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Hi, I'm Rafayet, an Electrical Engineering student at Michigan State University with a passion for analog/digital circuit design, embedded systems, and full-stack development. I love building smart solutions—from op-amp motor controllers ⚡ to AI-powered web apps 🐍. Currently diving deeper into FPGA development and web engineering, always eager to learn and collaborate. Let's connect and create something amazing!</p>
-                    <div class="skills">
-                        <h3>Technical Skills</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">HTML/CSS</span>
-                            <span class="skill-tag">HDL (Verilog/VHDL)</span>
-                            <span class="skill-tag">FPGA</span>
-                            <span class="skill-tag">Op-Amp Design</span>
-                            <span class="skill-tag">MATLAB</span>
-                            <span class="skill-tag">Three.js</span>
-                            <span class="skill-tag">Git/GitHub</span>
-                            <span class="skill-tag">LTspice</span>
-                            <span class="skill-tag">Vivado</span>
-                            <span class="skill-tag">API Integration</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="container">
-            <h2>Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="250">
-                    <div class="timeline-content">
-                        <span class="timeline-date">May 2025 – Sep 2025</span>
-                        <h3>Student Research Assistant</h3>
-                        <h4>University Outreach and Engagement Department (UOE), Michigan State University</h4>
-                        <p>Scanned and processed after-school program surveys across Michigan using Remark and SPSS software. Prepared PowerPoint presentations communicating insights to department stakeholders. Developed skills in team coordination and data workflow management.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-left" data-aos-delay="250">
-                    <div class="timeline-content">
-                        <span class="timeline-date">Nov 2022 – Present</span>
-                        <h3>Student Clerical Assistant</h3>
-                        <h4>Brody/West Circle Residence Halls, Michigan State University</h4>
-                        <p>Provided efficient clerical support in a fast-paced university dormitory environment serving hundreds of residents. Processed and managed incoming mail, maintained accurate records, and reconciled student accounts with strong attention to detail.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="250">
-                    <div class="timeline-content">
-                        <span class="timeline-date">June 2022 – August 2022</span>
-                        <h3>Data Analysis Intern</h3>
-                        <h4>HEXA</h4>
-                        <p>Conducted comprehensive data analysis using MATLAB and Excel to support critical project deliverables. Performed meticulous data collection and validation to ensure data integrity. Collaborated cross-functionally with engineering teams to ensure seamless operations and on-time project completion.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="container">
-            <h2>Education<img src="assets/spartan.png" alt="MSU Logo" class="msu-logo"></h2>
-            <div class="education-cards">
-                <div class="education-card" data-aos="fade-right">
-                    <h3>Michigan State University</h3>
-                    <div class="degree">Bachelor of Science in Electrical Engineering</div>
-                    <div class="education-date">Expected Graduation: August 2027</div>
-                    <p>Clubs:</p>
-                    <ul>
-                        <li>MSU Cybersecurity Club</li>
-                        <li>Student Trading Club</li>
-                        <li>Sparta Hacks</li>
-                    </ul>
-                    <br>
-                    <p>GPA: 3.035 | Dean's List: Fall 2023, Spring 2024, Spring 2025</p>
-                </div>
-                <div class="education-card" data-aos="fade-left">
-                    <h3>Awards & Certifications</h3>
-                    <div>
-                        <p><strong>Dean's List — Michigan State University</strong></p>
-                        <p class="education-date">Fall 2023, Spring 2024, Spring 2025</p>
-                    </div>
-                    <div>
-                        <p><strong>Duke of Edinburgh's Award (Bronze & Silver)</strong></p>
-                        <p class="education-date">2022 – 2023</p>
-                    </div>
-                    <div>
-                        <p><strong>Regional Mathematics Olympiad Award</strong></p>
-                        <p class="education-date">2023</p>
-                    </div>
-                    <div>
-                        <p><strong>Honorable Mention — Biology Olympiad</strong></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="container">
-            <h2>Projects</h2>
-            <div class="swiper project-swiper">
-                <div class="swiper-wrapper" data-aos="fade-right">
-                    <!-- Project 1 -->
-                    <div class="swiper-slide">
-                        <div class="project-card">
-                            <div class="image-container">
-                                <img src="assets/ClosedLoopMotor.JPG" alt="Closed-Loop Motor Control System" class="project-img">
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Closed-Loop Motor Control System</h3>
-                                <p class="project-description">Designed a 3-stage analog motor controller: a 555-timer PWM generator (5kHz, 20–80% duty cycle), an RC low-pass filter converting PWM to an 800mV DC reference, and closed-loop current regulation using a 741 op-amp with NPN/PNP push-pull transistors and a 10Ω shunt resistor feedback network. All R/C values hand-calculated from first principles.</p>
-                                <div class="project-tags">
-                                    <span class="project-tag">Analog Circuits</span>
-                                    <span class="project-tag">Op-Amp</span>
-                                    <span class="project-tag">555 Timer</span>
-                                    <span class="project-tag">ECE 303</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="swiper-slide">
-                        <div class="project-card">
-                            <div class="image-container">
-                                <img src="assets/vivado.png" alt="HDL FPGA Development" class="project-img">
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">HDL / FPGA Development (Vivado)</h3>
-                                <p class="project-description">Designed and implemented an 8-bit Arithmetic Logic Unit (ALU) in HDL using AMD Xilinx Vivado. Gained hands-on experience in digital logic design, RTL synthesis, functional simulation, and FPGA implementation workflows.</p>
-                                <div class="project-tags">
-                                    <span class="project-tag">HDL</span>
-                                    <span class="project-tag">FPGA</span>
-                                    <span class="project-tag">Vivado</span>
-                                    <span class="project-tag">ECE 331</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="swiper-slide">
-                        <div class="project-card">
-                            <div class="image-container">
-                                <img src="assets/Sheltermeon.jpg" alt="ShelterMEON" class="project-img">
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">ShelterMEON</h3>
-                                <p class="project-description">Built a full-stack emergency shelter-finder web app at CalHacks 11.0 (UC Berkeley). Integrated VAPI AI for real-time voice-to-text, Google Maps API for shelter visualization, Fetch.AI for real-time data agents, and SingleStore as the database backend. React frontend with Node.js/Express backend.</p>
-                                <div class="project-tags">
-                                    <span class="project-tag">React</span>
-                                    <span class="project-tag">Node.js</span>
-                                    <span class="project-tag">API</span>
-                                    <span class="project-tag">FullStack</span>
-                                </div>
-                                <a href="https://github.com/MeryemGurbanova/calhacks11" target="_blank" class="cta-button" style="margin-top: 10px; text-align: center;">View on GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 4 -->
-                    <div class="swiper-slide">
-                        <div class="project-card">
-                            <div class="image-container">
-                                <img src="assets/Portfolio_website.jpg" alt="Portfolio Website" class="project-img">
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Portfolio Website</h3>
-                                <p class="project-description">Designed and deployed a responsive portfolio using HTML, CSS, and JavaScript with AOS scroll animations and Swiper.js content carousels. Hosted via GitHub Pages with full version control through Git.</p>
-                                <div class="project-tags">
-                                    <span class="project-tag">HTML</span>
-                                    <span class="project-tag">CSS</span>
-                                    <span class="project-tag">JavaScript</span>
-                                </div>
-                                <a href="https://github.com/rafayetm0rtaza/Rafayets_den" target="_blank" class="cta-button" style="margin-top: 10px; text-align: center;">View on GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Navigation Controls -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="contact-form" data-aos="fade-up" data-aos-delay="250">
-                <h3>Want to get in touch?</h3>
-                <p class="form-subtitle">Feel free to reach out! I'll get back to you as soon as possible.</p>
-                <form action="https://formspree.io/f/xyzkropj" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
-                    </div>
-                    <button type="submit" class="cta-button">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="https://github.com/rafayetm0rtaza" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/sardar-rafayet-bin-murtaza-b6a9b31b3/" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/rafayet.murtaza/" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+          </div>
         </div>
-        <p>&copy; 2025 Sardar Rafayet Bin Murtaza. All rights reserved.</p>
-    </footer>
+        <div class="av-card accent-card">
+          <div class="av-accent-num">MSU</div>
+          <div class="av-accent-label">Electrical<br>Engineering<br>Class of 2027</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- JavaScript -->
-    <script>
-        // Dark/Light mode toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+<hr class="h-rule">
 
-        const currentTheme = localStorage.getItem('theme') ||
-                            (prefersDarkScheme.matches ? 'dark' : 'light');
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <div class="container">
+    <div class="section-label">// 02 — Expertise</div>
+    <div class="section-title">Core<br>Skills</div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <span class="skill-icon">⚡</span>
+        <div class="skill-name">Analog Design</div>
+        <p class="skill-desc">Op-amp circuits, 555-timer PWM generators, RC filter networks, and closed-loop current regulation. Designed from first principles with hand-calculated component values.</p>
+        <div class="skill-tags">
+          <span class="tag">Op-Amps</span><span class="tag">555 Timer</span><span class="tag">BJT</span><span class="tag">LTspice</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">◈</span>
+        <div class="skill-name">FPGA / HDL</div>
+        <p class="skill-desc">Digital logic design and RTL synthesis in Verilog and VHDL. Implemented arithmetic units and state machines on Xilinx devices using the Vivado toolchain.</p>
+        <div class="skill-tags">
+          <span class="tag">Verilog</span><span class="tag">VHDL</span><span class="tag">Vivado</span><span class="tag">Xilinx</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">∿</span>
+        <div class="skill-name">Signal & Systems</div>
+        <p class="skill-desc">Frequency-domain analysis, filter design, and control theory applied to circuit and system problems. LTI systems, Bode analysis, and MATLAB-based simulation.</p>
+        <div class="skill-tags">
+          <span class="tag">MATLAB</span><span class="tag">Control Systems</span><span class="tag">Filter Design</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">〈/〉</span>
+        <div class="skill-name">Web Dev</div>
+        <p class="skill-desc">Front-to-back web development — responsive interfaces in HTML/CSS/JavaScript with Three.js 3D, and React/Node.js full-stack applications.</p>
+        <div class="skill-tags">
+          <span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">Three.js</span><span class="tag">React</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">🐍</span>
+        <div class="skill-name">Python & APIs</div>
+        <p class="skill-desc">Automation, data processing, and API integration. Built AI-powered web apps leveraging external services like Google Maps, VAPI, and SingleStore.</p>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">API Integration</span><span class="tag">Express</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">📊</span>
+        <div class="skill-name">Data Analysis</div>
+        <p class="skill-desc">Processing and analysis of large survey datasets using Remark and SPSS. Excel-based data validation and MATLAB-driven analysis for engineering deliverables.</p>
+        <div class="skill-tags">
+          <span class="tag">SPSS</span><span class="tag">Excel</span><span class="tag">MATLAB</span><span class="tag">Git/GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        document.documentElement.setAttribute('data-theme', currentTheme);
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">// 03 — Work</div>
+    <div class="section-title">Selected<br>Projects</div>
+  </div>
+  <div class="projects-list">
+    <div class="project-item reveal">
+      <span class="project-num">01</span>
+      <img src="assets/ClosedLoopMotor.JPG" alt="Closed-Loop Motor Control" class="project-thumb">
+      <span class="project-name">Motor Control System</span>
+      <span class="project-desc">3-stage analog motor controller: 555-timer PWM (5 kHz, 20–80% duty cycle), RC low-pass filter to 800 mV DC reference, and closed-loop current regulation via 741 op-amp with NPN/PNP push-pull transistors and 10Ω shunt feedback. All values hand-calculated.</span>
+      <span class="project-tag">Analog / ECE 303</span>
+    </div>
+    <div class="project-item reveal">
+      <span class="project-num">02</span>
+      <img src="assets/vivado.png" alt="HDL FPGA ALU" class="project-thumb">
+      <span class="project-name">8-Bit ALU</span>
+      <span class="project-desc">Fully functional 8-bit Arithmetic Logic Unit designed in HDL using AMD Xilinx Vivado. Hands-on experience in digital logic, RTL synthesis, functional simulation, and FPGA implementation workflows.</span>
+      <span class="project-tag">Digital / ECE 331</span>
+    </div>
+    <div class="project-item reveal">
+      <span class="project-num">03</span>
+      <img src="assets/Sheltermeon.jpg" alt="ShelterMEON" class="project-thumb">
+      <div>
+        <span class="project-name">ShelterMEON</span>
+        <a href="https://github.com/MeryemGurbanova/calhacks11" target="_blank" class="project-link">github ↗</a>
+      </div>
+      <span class="project-desc">Full-stack emergency shelter-finder built at CalHacks 11.0 (UC Berkeley). Integrated VAPI AI for real-time voice-to-text, Google Maps API for shelter visualization, Fetch.AI data agents, and SingleStore backend. React + Node.js/Express.</span>
+      <span class="project-tag">Full-Stack</span>
+    </div>
+    <div class="project-item reveal">
+      <span class="project-num">04</span>
+      <img src="assets/Portfolio_website.jpg" alt="Portfolio Website" class="project-thumb">
+      <div>
+        <span class="project-name">Portfolio Site</span>
+        <a href="https://github.com/rafayetm0rtaza/Rafayets_den" target="_blank" class="project-link">github ↗</a>
+      </div>
+      <span class="project-desc">Responsive personal portfolio with AOS scroll animations and Swiper.js carousels — designed, built, and deployed to GitHub Pages with full version control.</span>
+      <span class="project-tag">Web / HTML·CSS·JS</span>
+    </div>
+  </div>
+</section>
 
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            const theme = isDark ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-        });
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">// 04 — Experience</div>
+    <div class="section-title">Where<br>I've Been</div>
+    <div class="exp-grid">
+      <div class="exp-timeline" id="expTimeline">
+        <div class="exp-year-item active" data-exp="0">
+          <div class="exp-year">May 2025 — Sep 2025</div>
+          <div class="exp-company">UOE · Michigan State</div>
+        </div>
+        <div class="exp-year-item" data-exp="1">
+          <div class="exp-year">Nov 2022 — Present</div>
+          <div class="exp-company">Brody / West Circle · MSU</div>
+        </div>
+        <div class="exp-year-item" data-exp="2">
+          <div class="exp-year">Jun 2022 — Aug 2022</div>
+          <div class="exp-company">HEXA</div>
+        </div>
+      </div>
+      <div class="exp-details">
+        <div class="exp-detail-item active">
+          <div class="exp-role">Student Research<br>Assistant</div>
+          <div class="exp-meta">University Outreach & Engagement · Michigan State University</div>
+          <p class="exp-body">Processed after-school program survey data across Michigan using Remark and SPSS software. Communicated findings to department stakeholders through PowerPoint presentations.</p>
+          <ul class="exp-bullets">
+            <li>Scanned and digitized large volumes of paper survey data with high accuracy using Remark OCR software</li>
+            <li>Conducted statistical analysis in SPSS and packaged findings into stakeholder-ready presentations</li>
+            <li>Developed skills in team coordination and data workflow management across multiple projects</li>
+          </ul>
+        </div>
+        <div class="exp-detail-item">
+          <div class="exp-role">Student Clerical<br>Assistant</div>
+          <div class="exp-meta">Brody / West Circle Residence Halls · Michigan State University</div>
+          <p class="exp-body">Provided efficient clerical support in a fast-paced university dormitory environment serving hundreds of residents.</p>
+          <ul class="exp-bullets">
+            <li>Processed and managed incoming mail and packages for a large residential community</li>
+            <li>Maintained accurate records and reconciled student accounts with strong attention to detail</li>
+            <li>Delivered reliable front-desk support with a consistent track record since November 2022</li>
+          </ul>
+        </div>
+        <div class="exp-detail-item">
+          <div class="exp-role">Data Analysis<br>Intern</div>
+          <div class="exp-meta">HEXA · Summer 2022</div>
+          <p class="exp-body">Conducted comprehensive data analysis using MATLAB and Excel to support critical project deliverables in a cross-functional engineering environment.</p>
+          <ul class="exp-bullets">
+            <li>Performed meticulous data collection and validation to ensure data integrity across project cycles</li>
+            <li>Applied MATLAB-based analysis pipelines to derive insights from engineering datasets</li>
+            <li>Collaborated cross-functionally with engineering teams to ensure on-time project completion</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+<hr class="h-rule">
 
-        // Initialize AOS
-        document.addEventListener('DOMContentLoaded', function() {
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: false,
-                mirror: true
-            });
-        });
+<!-- EDUCATION -->
+<section id="education" class="edu-section">
+  <div class="container">
+    <div class="section-label">// 05 — Education</div>
+    <div class="section-title">Where<br>I Study</div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-card-title">
+          Michigan State University
+          <img src="assets/spartan.png" alt="MSU Spartan" class="msu-logo">
+        </div>
+        <div class="edu-degree">B.S. Electrical Engineering</div>
+        <div class="edu-date">Expected Graduation: August 2027</div>
+        <p>Expected Graduation: August 2027</p>
+        <br>
+        <p style="margin-bottom:10px; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); font-family:var(--mono);">Clubs & Activities</p>
+        <ul>
+          <li>MSU Cybersecurity Club</li>
+          <li>Student Trading Club</li>
+          <li>Sparta Hacks</li>
+        </ul>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-card-title">Awards &amp;<br>Certifications</div>
+        <br>
+        <div class="edu-award-row">
+          <div class="edu-award-title">Duke of Edinburgh's Award (Bronze &amp; Silver)</div>
+          <div class="edu-award-date">2022 – 2023</div>
+        </div>
+        <div class="edu-award-row">
+          <div class="edu-award-title">Regional Mathematics Olympiad Award</div>
+          <div class="edu-award-date">2023</div>
+        </div>
+        <div class="edu-award-row">
+          <div class="edu-award-title">Honorable Mention — Biology Olympiad</div>
+          <div class="edu-award-date"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Initialize Swiper
-        new Swiper('.project-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 30 }
-            }
-        });
-    </script>
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-label">// 06 — Contact</div>
+    <div class="contact-inner">
+      <div>
+        <div class="contact-lede">Let's<br>Build<br><span class="hl">Something.</span></div>
+        <p class="contact-sub">Open to internship and research opportunities in electrical engineering, analog design, embedded systems, and full-stack development. Let's connect.</p>
+        <div class="contact-links">
+          <a href="https://github.com/rafayetm0rtaza" target="_blank" class="contact-link">
+            <i class="contact-link-icon fab fa-github"></i>
+            github.com/rafayetm0rtaza
+          </a>
+          <a href="https://www.linkedin.com/in/sardar-rafayet-bin-murtaza-b6a9b31b3/" target="_blank" class="contact-link">
+            <i class="contact-link-icon fab fa-linkedin"></i>
+            linkedin.com/in/sardar-rafayet-bin-murtaza
+          </a>
+          <a href="https://www.instagram.com/rafayet.murtaza/" target="_blank" class="contact-link">
+            <i class="contact-link-icon fab fa-instagram"></i>
+            instagram.com/rafayet.murtaza
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/xyzkropj" method="POST">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Subject</label>
+          <input type="text" name="subject" placeholder="Internship / Collaboration / Research">
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea name="message" placeholder="Tell me about the opportunity..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 <span>Sardar Rafayet Bin Murtaza</span></div>
+  <div class="footer-social">
+    <a href="https://github.com/rafayetm0rtaza" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/sardar-rafayet-bin-murtaza-b6a9b31b3/" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/rafayet.murtaza/" target="_blank">Instagram</a>
+  </div>
+  <div class="footer-status">
+    <div class="status-dot"></div>
+    Open to Opportunities
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring   = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animateCursor() {
+    cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+  document.querySelectorAll('a, button, input, textarea').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+  });
+
+  // Nav scroll class
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+
+  // Experience tabs
+  const yearItems   = document.querySelectorAll('.exp-year-item');
+  const detailItems = document.querySelectorAll('.exp-detail-item');
+  yearItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const idx = item.dataset.exp;
+      yearItems.forEach(y => y.classList.remove('active'));
+      detailItems.forEach(d => d.classList.remove('active'));
+      item.classList.add('active');
+      detailItems[idx].classList.add('active');
+    });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
 </body>
 </html>
