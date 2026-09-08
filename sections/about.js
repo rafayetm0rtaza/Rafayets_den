@@ -2,9 +2,9 @@ import * as THREE from 'three';
 import { makeCanvasTexture, wrapText } from '../utils/text.js';
 import { fadeWindow } from '../utils/scroll.js';
 
-const BIO_1 = "I'm an Electrical Engineering student at Michigan State University with a deep interest in analog/digital circuit design, embedded systems, and full-stack development. I believe great engineering lives at the intersection of hardware intuition and software precision.";
-const BIO_2 = "My work spans from designing a 3-stage op-amp motor controller with a 555-timer PWM generator to implementing an 8-bit ALU in Verilog on an FPGA — and building full-stack web apps in between.";
-const BIO_3 = "Currently diving deeper into FPGA development and web engineering. Always eager to learn, build, and collaborate on things that matter.";
+const BIO_1 = "Electrical Engineering student at Michigan State University focused on analog and digital circuit design, embedded systems, robotics, and hardware-software integration.";
+const BIO_2 = "My work moves from first-principles analysis to bench verification: closed-loop motor control, STM32 sensing, bare-metal Arm firmware, and HDL design.";
+const BIO_3 = "Electrical Co-Lead for Spartan Autonomous Robotics, helping own the power, wiring, sensors, firmware bring-up, and documentation behind a quadruped robot.";
 
 export function createAbout(cameraStop = new THREE.Vector3(8, 5, 10)) {
   const group = new THREE.Group();
@@ -33,7 +33,7 @@ export function createAbout(cameraStop = new THREE.Vector3(8, 5, 10)) {
     ctx.fillText('WHO I AM', 48, 86);
 
     ctx.fillStyle = '#cfd8e8';
-    ctx.font = '300 27px "Space Grotesk", sans-serif';
+    ctx.font = '300 26px "Space Grotesk", sans-serif';
     let y = wrapText(ctx, BIO_1, 48, 190, W - 96, 36);
     y = wrapText(ctx, BIO_2, 48, y + 14, W - 96, 36);
     wrapText(ctx, BIO_3, 48, y + 14, W - 96, 36);

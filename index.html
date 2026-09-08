@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rafayet Murtaza — Electrical Engineer</title>
+<meta name="description" content="Portfolio of Rafayet Murtaza, an electrical engineering student building embedded systems, analog circuits, robotics, and digital hardware.">
+<meta name="theme-color" content="#05070d">
 <link rel="icon" type="image/jpg" href="assets/Logo_New.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script type="importmap">
 {
@@ -47,34 +49,59 @@
 <!-- Mobile content (real content, HTML fallback below canvas) -->
 <div id="mobileContent">
   <section class="m-hero">
+    <p class="m-kicker">Electrical engineer · embedded systems · robotics</p>
     <h1>Rafayet<br>Murtaza</h1>
-    <p class="m-sub">Electrical Engineering — Michigan State University · Class of 2027</p>
-    <p class="m-desc">Building circuits from first principles — from closed-loop op-amp motor controllers and FPGA ALU implementations to full-stack AI-powered web apps. Analog and digital, hardware and software.</p>
+    <p class="m-sub">Michigan State University · B.S. Electrical Engineering · May 2027</p>
+    <p class="m-desc">I build across the stack—from analog control loops and bare-metal Arm firmware to sensor systems, FPGA logic, and the tools that bring them to life.</p>
+    <div class="m-status"><span></span> Electrical Co-Lead · Spartan Autonomous Robotics Team</div>
   </section>
 
   <section id="m-about">
     <h2>About</h2>
-    <p>I'm an Electrical Engineering student at Michigan State University with a deep interest in analog/digital circuit design, embedded systems, and full-stack development. I believe great engineering lives at the intersection of hardware intuition and software precision.</p>
-    <p>My work spans from designing a 3-stage op-amp motor controller with a 555-timer PWM generator to implementing an 8-bit ALU in Verilog on an FPGA — and building full-stack web apps in between. I'm equally comfortable reading a datasheet as I am debugging a React component.</p>
-    <p>Currently diving deeper into FPGA development and web engineering. Always eager to learn, build, and collaborate on things that matter.</p>
+    <p>I'm an Electrical Engineering student at Michigan State University focused on analog and digital circuit design, embedded systems, robotics, and hardware-software integration.</p>
+    <p>My work moves from first-principles analysis to bench verification: a closed-loop analog motor controller, an STM32 sensor platform, bare-metal Arm interrupt handling, and an 8-bit HDL ALU.</p>
+    <p>As Electrical Co-Lead for the Spartan Autonomous Robotics Team, I help own the electrical architecture of our quadruped platform—from schematics and power distribution to wiring, sensors, firmware bring-up, and team documentation.</p>
+  </section>
+
+  <section id="m-leadership">
+    <h2>Leadership</h2>
+    <div class="m-card m-card--featured">
+      <div class="m-card-topline"><span class="m-eyebrow">Spartan Autonomous Robotics Team</span><span class="m-date">Aug 2026 — Present</span></div>
+      <h3>Electrical Co-Lead</h3>
+      <p>Co-lead the electrical subteam for the team's primary quadruped robot. Own schematic capture and ECAD, power distribution, wiring harness design, sensor integration, and firmware bring-up.</p>
+      <ul>
+        <li>Building the team's electrical source of truth: component registry, pinouts, harness documentation, power budget, and smoke-test procedures.</li>
+        <li>Designing a beginner training track and specifying electrical BOMs for recruit mini-project kits.</li>
+      </ul>
+    </div>
   </section>
 
   <section id="m-projects">
     <h2>Projects</h2>
     <div class="m-card">
       <h3>Motor Control System</h3>
-      <span class="m-tag">Analog / ECE 303</span>
-      <p>3-stage analog motor controller: 555-timer PWM (5 kHz, 20–80% duty cycle), RC low-pass filter to 800 mV DC reference, and closed-loop current regulation via 741 op-amp with NPN/PNP push-pull transistors and 10Ω shunt feedback. All values hand-calculated.</p>
+      <span class="m-tag">Analog · ECE 303 · Fall 2025</span>
+      <p>Three-stage closed-loop DC motor controller: 5 kHz 555-timer PWM, RC low-pass conversion to an 800 mV reference, and 741 op-amp current regulation driving a TIP31/TIP32 push-pull stage. Calculated from first principles and verified on the bench.</p>
     </div>
     <div class="m-card">
-      <h3>8-Bit ALU</h3>
-      <span class="m-tag">Digital / ECE 331</span>
-      <p>Fully functional 8-bit Arithmetic Logic Unit designed in HDL using AMD Xilinx Vivado. Digital logic, RTL synthesis, functional simulation, and FPGA implementation workflows.</p>
+      <h3>STM32 Environmental Monitor</h3>
+      <span class="m-tag">Embedded · C · STM32F411RE</span>
+      <p>Real-time monitor integrating an MQ135 gas sensor through the 12-bit ADC, DHT22 temperature and humidity over a 1-wire protocol, and an SSD1306 OLED over I2C1.</p>
+    </div>
+    <div class="m-card">
+      <h3>Bare-Metal Arm Cortex-M0+</h3>
+      <span class="m-tag">Firmware · Assembly · ECE 331</span>
+      <p>Programmed an FRDM-KL25Z in Arm Thumb assembly with direct-register GPIO, NVIC interrupt handling, ISR-driven state transitions, and memory-level debugging in Keil µVision.</p>
+    </div>
+    <div class="m-card">
+      <h3>8-Bit Arithmetic Logic Unit</h3>
+      <span class="m-tag">HDL · AMD Xilinx Vivado</span>
+      <p>Designed and implemented an 8-bit ALU in HDL across RTL synthesis, functional simulation, and the FPGA implementation workflow.</p>
     </div>
     <div class="m-card">
       <h3>ShelterMEON</h3>
       <span class="m-tag">Full-Stack</span>
-      <p>Full-stack emergency shelter-finder built at CalHacks 11.0 (UC Berkeley). VAPI AI real-time voice-to-text, Google Maps API, Fetch.AI data agents, SingleStore backend. React + Node.js/Express.</p>
+      <p>Full-stack emergency shelter-finder built at CalHacks 11.0 using React and Node.js/Express, with voice-to-text search and Google Maps visualization.</p>
       <a href="https://github.com/MeryemGurbanova/calhacks11" target="_blank" rel="noopener">github ↗</a>
     </div>
     <div class="m-card">
@@ -83,56 +110,62 @@
       <p>Personal portfolio rebuilt as a Three.js Tesla Coil electricity lab — procedural geometry, scroll-driven camera, deployed to GitHub Pages.</p>
       <a href="https://github.com/rafayetm0rtaza/Rafayets_den" target="_blank" rel="noopener">github ↗</a>
     </div>
-    <div class="m-card">
-      <h3>STM32 Environmental Monitor</h3>
-      <span class="m-tag">Embedded / STM32·C·I2C·ADC</span>
-      <p>Real-time indoor environmental monitor on STM32F411RE — CO2 (MQ135 via 12-bit ADC), temperature and humidity (DHT22 over 1-wire), SSD1306 OLED over I2C. Configured with STM32CubeMX.</p>
-      <a href="https://github.com/rafayetm0rtaza/stm32-environmental-monitor" target="_blank" rel="noopener">github ↗</a>
-    </div>
   </section>
 
   <section id="m-skills">
     <h2>Skills</h2>
-    <div class="m-card"><h3>Analog Design</h3><p>Op-Amps · 555 Timer · BJT · LTspice</p></div>
-    <div class="m-card"><h3>FPGA / HDL</h3><p>Verilog · VHDL · Vivado · Xilinx</p></div>
-    <div class="m-card"><h3>Signal &amp; Systems</h3><p>MATLAB · Control Systems · Filter Design</p></div>
-    <div class="m-card"><h3>Web Dev</h3><p>JavaScript · HTML/CSS · Three.js · React</p></div>
-    <div class="m-card"><h3>Python &amp; APIs</h3><p>Python · Node.js · API Integration · Express</p></div>
-    <div class="m-card"><h3>Data Analysis</h3><p>SPSS · Excel · MATLAB · Git/GitHub</p></div>
+    <div class="m-card"><h3>Programming &amp; HDL</h3><p>C · Embedded C · Python · MATLAB · JavaScript · Verilog · VHDL</p></div>
+    <div class="m-card"><h3>EDA &amp; Simulation</h3><p>LTspice · KiCad · Vivado · STM32CubeIDE/CubeMX · Keil µVision</p></div>
+    <div class="m-card"><h3>Analog &amp; Circuit Design</h3><p>Op-amps · BJT output stages · 555 PWM · RC filters · biasing · small-signal analysis</p></div>
+    <div class="m-card"><h3>Embedded &amp; Interfaces</h3><p>Arm Cortex-M0+/M4 · GPIO · NVIC · I2C · SPI · UART · ADC</p></div>
+    <div class="m-card"><h3>Lab Instruments</h3><p>Oscilloscope · function generator · bench supply · digital multimeter</p></div>
+    <div class="m-card"><h3>Software Tools</h3><p>Git · GitHub · Visual Studio Code</p></div>
   </section>
 
   <section id="m-experience">
     <h2>Experience</h2>
     <div class="m-card">
+      <h3>Electrical Co-Lead</h3>
+      <span class="m-tag">Spartan Autonomous Robotics Team · Aug 2026 — Present</span>
+      <p>Lead electrical architecture and bring-up for the team's quadruped robot platform while building documentation and training systems for new members.</p>
+    </div>
+    <div class="m-card">
       <h3>Student Research Assistant</h3>
       <span class="m-tag">UOE · Michigan State · May 2025 — Sep 2025</span>
-      <p>Processed after-school program survey data across Michigan using Remark and SPSS. Communicated findings to department stakeholders through PowerPoint presentations.</p>
+      <p>Processed statewide after-school program survey data using Remark and SPSS; prepared stakeholder presentations on program impact.</p>
     </div>
     <div class="m-card">
       <h3>Student Clerical Assistant</h3>
       <span class="m-tag">Brody / West Circle · MSU · Nov 2022 — Present</span>
-      <p>Clerical support in a fast-paced university dormitory environment — mail and package processing, records, and front-desk support for hundreds of residents.</p>
+      <p>Process incoming mail, maintain records, and reconcile student accounts for a residence community of several hundred.</p>
     </div>
     <div class="m-card">
       <h3>Data Analysis Intern</h3>
       <span class="m-tag">HEXA · Jun 2022 — Aug 2022</span>
-      <p>Comprehensive data analysis using MATLAB and Excel supporting project deliverables in a cross-functional engineering environment.</p>
+      <p>Analyzed learner engagement and content performance data in Excel to support curriculum decisions and founding-team reporting.</p>
     </div>
     <div class="m-card">
       <h3>B.S. Electrical Engineering</h3>
-      <span class="m-tag">Michigan State University · Expected Aug 2027</span>
-      <p>Clubs: MSU Cybersecurity Club · Student Trading Club · Sparta Hacks. Awards: Duke of Edinburgh's Award (Bronze &amp; Silver), Regional Mathematics Olympiad, Honorable Mention — Biology Olympiad.</p>
+      <span class="m-tag">Michigan State University · Expected May 2027</span>
+      <p>Dean's List: Fall 2023, Spring 2024, Spring 2025. Member, IEEE Student Branch. Duke of Edinburgh's Award (Bronze &amp; Silver) · Regional Mathematics Olympiad Award · Volunteer educator.</p>
     </div>
   </section>
 
   <section id="m-contact">
     <h2>Contact</h2>
     <div class="m-links">
-      <a href="https://github.com/rafayetm0rtaza" target="_blank" rel="noopener">GitHub — github.com/rafayetm0rtaza</a>
-      <a href="https://www.linkedin.com/in/sardar-rafayet-bin-murtaza-b6a9b31b3/" target="_blank" rel="noopener">LinkedIn — sardar-rafayet-bin-murtaza</a>
-      <a href="mailto:murtaza2@msu.edu">Email — murtaza2@msu.edu</a>
+      <a href="https://github.com/rafayetm0rtaza" target="_blank" rel="noopener" aria-label="Rafayet Murtaza on GitHub">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.36-3.9-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.29-5.27-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18A10.9 10.9 0 0 1 12 6.12c.98 0 1.96.13 2.88.39 2.19-1.49 3.15-1.18 3.15-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.7 5.39-5.28 5.68.42.36.79 1.06.79 2.14v3.25c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+        <span><strong>GitHub</strong><small>github.com/rafayetm0rtaza</small></span>
+      </a>
+      <a href="https://www.linkedin.com/in/rafayet-murtaza" target="_blank" rel="noopener" aria-label="Rafayet Murtaza on LinkedIn">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.99h3.42v1.57h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.42a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.03H3.54V8.99H7.1v11.46Z"/></svg>
+        <span><strong>LinkedIn</strong><small>linkedin.com/in/rafayet-murtaza</small></span>
+      </a>
+      <a href="mailto:murtaza2@msu.edu"><span class="m-link-symbol" aria-hidden="true">@</span><span><strong>Email</strong><small>murtaza2@msu.edu</small></span></a>
+      <a href="tel:+15172146053"><span class="m-link-symbol" aria-hidden="true">↗</span><span><strong>Phone</strong><small>(517) 214-6053</small></span></a>
     </div>
-    <p class="m-footer">© 2025 Sardar Rafayet Bin Murtaza</p>
+    <p class="m-footer">© 2026 Sardar Rafayet Bin Murtaza</p>
   </section>
 </div>
 

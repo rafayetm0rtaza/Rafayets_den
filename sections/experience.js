@@ -4,32 +4,38 @@ import { fadeWindow } from '../utils/scroll.js';
 
 const ENTRIES = [
   {
+    title: 'Electrical Co-Lead',
+    tag: 'Spartan Autonomous Robotics · Aug 2026 — Present',
+    body: 'Own schematic capture, power distribution, wiring harnesses, sensors, firmware bring-up, documentation, training, and electrical BOMs for the team’s quadruped platform.'
+  },
+  {
     title: 'Student Research Assistant',
     tag: 'UOE · Michigan State · May 2025 — Sep 2025',
-    body: 'Processed after-school program survey data across Michigan using Remark and SPSS. Communicated findings to department stakeholders through PowerPoint presentations.'
+    body: 'Processed statewide after-school program survey data using Remark and SPSS; prepared stakeholder presentations on program impact.'
   },
   {
     title: 'Student Clerical Assistant',
     tag: 'Brody / West Circle · MSU · Nov 2022 — Present',
-    body: 'Clerical support in a fast-paced university dormitory — mail and package processing, records, and front-desk support for hundreds of residents.'
+    body: 'Process incoming mail, maintain records, and reconcile student accounts for a residence community of several hundred.'
   },
   {
     title: 'Data Analysis Intern',
     tag: 'HEXA · Jun 2022 — Aug 2022',
-    body: 'Data analysis with MATLAB and Excel supporting project deliverables in a cross-functional engineering environment.'
+    body: 'Analyzed learner engagement and content performance data in Excel to support curriculum decisions and founding-team reporting.'
   },
   {
     title: 'B.S. Electrical Engineering',
-    tag: 'Michigan State University · Expected Aug 2027',
-    body: 'MSU Cybersecurity Club · Student Trading Club · Sparta Hacks. Duke of Edinburgh’s Award (Bronze & Silver) · Regional Mathematics Olympiad · Honorable Mention, Biology Olympiad.'
+    tag: 'Michigan State University · Expected May 2027',
+    body: 'Dean’s List: Fall 2023, Spring 2024, Spring 2025. IEEE Student Branch member. Coursework spans circuits, devices, controls, signal processing, electromagnetics, and microprocessors.'
   }
 ];
 
 const PANEL_POSITIONS = [
-  new THREE.Vector3(0.8, 5.4, 0.8),
-  new THREE.Vector3(3.4, 4.8, 0.4),
-  new THREE.Vector3(0.4, 3.2, 2.6),
-  new THREE.Vector3(3.0, 2.6, 2.2)
+  new THREE.Vector3(0.4, 5.5, 0.8),
+  new THREE.Vector3(3.5, 5.0, 0.3),
+  new THREE.Vector3(0.3, 3.1, 2.8),
+  new THREE.Vector3(3.4, 2.5, 2.2),
+  new THREE.Vector3(1.8, 0.5, 3.5)
 ];
 
 export function createExperience(cameraStop = new THREE.Vector3(5, 1, 8)) {

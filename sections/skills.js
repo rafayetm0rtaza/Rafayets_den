@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { makeLabelSprite } from '../utils/text.js';
 import { fadeWindow } from '../utils/scroll.js';
 
-// Blue = firmware/embedded, Orange = hardware, Green = software/web
+// Blue = embedded/firmware, orange = hardware, green = software/tooling
 const CAT_COLORS = {
   firmware: 0x4fc3f7,
   hardware: 0xff9e40,
@@ -10,22 +10,23 @@ const CAT_COLORS = {
 };
 
 const SKILLS = [
-  { name: 'Analog Design', cat: 'hardware' },
+  { name: 'Analog & Circuit Design', cat: 'hardware' },
   { name: 'FPGA / HDL', cat: 'firmware' },
-  { name: 'Signal & Systems', cat: 'hardware' },
-  { name: 'Web Dev', cat: 'software' },
-  { name: 'Python & APIs', cat: 'software' },
-  { name: 'Data Analysis', cat: 'software' }
+  { name: 'Arm Cortex-M0+ / M4', cat: 'firmware' },
+  { name: 'I2C · SPI · UART · ADC', cat: 'firmware' },
+  { name: 'C · Python · MATLAB', cat: 'software' },
+  { name: 'KiCad · LTspice · Vivado', cat: 'hardware' }
 ];
 
 // related pairs (indices into SKILLS)
 const LINKS = [
-  [0, 2], // analog — signals
+  [0, 2], // analog — embedded
   [0, 1], // analog — fpga
-  [1, 4], // fpga — python
-  [3, 4], // web — python
-  [4, 5], // python — data
-  [3, 5]  // web — data
+  [1, 4], // fpga — programming
+  [2, 3], // cortex — interfaces
+  [3, 4], // interfaces — programming
+  [4, 5], // programming — tools
+  [0, 5]  // circuits — EDA
 ];
 
 export function createSkills() {

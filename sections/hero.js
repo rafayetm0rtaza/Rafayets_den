@@ -9,7 +9,7 @@ export function createHero() {
     ctx.textBaseline = 'top';
     ctx.fillStyle = '#4fc3f7';
     ctx.font = '400 30px "Space Grotesk", sans-serif';
-    ctx.fillText('ELECTRICAL ENGINEERING — MSU', 24, 40);
+    ctx.fillText('ELECTRICAL ENGINEERING · ROBOTICS · EMBEDDED', 24, 40);
 
     ctx.fillStyle = '#e8eaf6';
     ctx.font = '600 120px "Space Grotesk", sans-serif';
@@ -21,10 +21,10 @@ export function createHero() {
 
     ctx.fillStyle = '#9fb3c8';
     ctx.font = '300 34px "Space Grotesk", sans-serif';
-    ctx.fillText('Analog · Digital · Hardware · Software', 24, 400);
+    ctx.fillText('Circuits from first principles. Systems built to work.', 24, 400);
     ctx.fillStyle = '#4fc3f7';
     ctx.font = '400 28px "Space Grotesk", sans-serif';
-    ctx.fillText('CLASS OF 2027', 24, 452);
+    ctx.fillText('MSU · EXPECTED MAY 2027', 24, 452);
   }, 1024, 512);
 
   const mat = new THREE.MeshBasicMaterial({
