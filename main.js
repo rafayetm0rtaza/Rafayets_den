@@ -24,8 +24,8 @@ const renderer = new THREE.WebGLRenderer({
 renderer.shadowMap.enabled = false;
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#050508');
-scene.fog = new THREE.FogExp2('#050508', 0.022);
+scene.background = new THREE.Color('#05070d');
+scene.fog = new THREE.FogExp2('#05070d', 0.022);
 
 const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
 initResponsive(renderer, camera);
