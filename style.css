@@ -1622,3 +1622,73 @@ details[open] summary span {
     position: static;
   }
 }
+
+/* A featured PCB project keeps the full portrait fabrication photo visible. */
+.project-featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+.project-featured .pcb-visual {
+  aspect-ratio: 1.15;
+  background: #101e38;
+}
+.project-featured .pcb-visual img {
+  object-fit: contain;
+}
+.project-featured .project-copy {
+  padding: 15px 16px 15px 0;
+}
+.project-featured .project-copy h3 {
+  font-size: 32px;
+}
+.project-featured .project-copy .project-credit {
+  font-size: 12px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.pcb-full-image {
+  background: #101e38;
+}
+.pcb-full-image img {
+  max-height: 900px;
+  background: #101e38;
+}
+.pcb-full-image figcaption {
+  background: var(--wash);
+}
+@media (max-width: 760px) {
+  .project-featured {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 18px;
+  }
+  .project-featured .pcb-visual {
+    aspect-ratio: 1;
+  }
+  .project-featured .project-copy {
+    padding: 20px 2px 4px;
+  }
+  .project-featured .project-copy h3 {
+    font-size: 26px;
+  }
+  .pcb-full-image img {
+    max-height: none;
+  }
+}
+@media print {
+  .project-featured {
+    display: block;
+    padding: 0;
+    border: 0;
+  }
+  .project-featured .project-copy {
+    padding: 0;
+  }
+}

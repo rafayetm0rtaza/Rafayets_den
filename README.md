@@ -42,3 +42,7 @@ Project text is based on the supplied résumé and public project documentation.
 ## License
 
 See [LICENSE](LICENSE).
+
+## ElectroPup attribution
+
+The ElectroPup power-carrier project is an adaptation of [reubenstr/ElectroPup](https://github.com/reubenstr/ElectroPup/tree/main/pcbs/power_carrier). Rafayet’s documented change is a copper-to-copper clearance of 15 mil (0.381 mm); the fabrication photo was supplied by Rafayet. Original hardware authorship is credited on the homepage and project page.
