@@ -1,174 +1,615 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rafayet Murtaza — Electrical Engineer</title>
-<meta name="description" content="Portfolio of Rafayet Murtaza, an electrical engineering student building embedded systems, analog circuits, robotics, and digital hardware.">
-<meta name="theme-color" content="#05070d">
-<link rel="icon" type="image/jpg" href="assets/Logo_New.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
-  }
-}
-</script>
-</head>
-<body>
-
-<div class="progress-bar" id="progressBar"></div>
-
-<nav id="nav">
-  <a href="#" class="nav-logo" data-p="0">RM<span>/</span>EE</a>
-  <div class="nav-links">
-    <a href="#m-about" data-p="0.15">About</a>
-    <a href="#m-projects" data-p="0.35">Projects</a>
-    <a href="#m-skills" data-p="0.55">Skills</a>
-    <a href="#m-experience" data-p="0.75">Experience</a>
-    <a href="#m-contact" data-p="0.90">Contact</a>
-  </div>
-</nav>
-
-<canvas id="scene"></canvas>
-
-<div class="scroll-hint" id="scrollHint">
-  <div class="scroll-hint-line"></div>
-  Scroll
-</div>
-
-<div id="fps"></div>
-
-<!-- Desktop scroll driver -->
-<div id="scrollSpace"></div>
-
-<!-- Mobile content (real content, HTML fallback below canvas) -->
-<div id="mobileContent">
-  <section class="m-hero">
-    <p class="m-kicker">Electrical engineer · embedded systems · robotics</p>
-    <h1>Rafayet<br>Murtaza</h1>
-    <p class="m-sub">Michigan State University · B.S. Electrical Engineering · May 2027</p>
-    <p class="m-desc">I build across the stack—from analog control loops and bare-metal Arm firmware to sensor systems, FPGA logic, and the tools that bring them to life.</p>
-    <div class="m-status"><span></span> Electrical Co-Lead · Spartan Autonomous Robotics Team</div>
-  </section>
-
-  <section id="m-about">
-    <h2>About</h2>
-    <p>I'm an Electrical Engineering student at Michigan State University focused on analog and digital circuit design, embedded systems, robotics, and hardware-software integration.</p>
-    <p>My work moves from first-principles analysis to bench verification: a closed-loop analog motor controller, an STM32 sensor platform, bare-metal Arm interrupt handling, and an 8-bit HDL ALU.</p>
-    <p>As Electrical Co-Lead for the Spartan Autonomous Robotics Team, I help own the electrical architecture of our quadruped platform—from schematics and power distribution to wiring, sensors, firmware bring-up, and team documentation.</p>
-  </section>
-
-  <section id="m-leadership">
-    <h2>Leadership</h2>
-    <div class="m-card m-card--featured">
-      <div class="m-card-topline"><span class="m-eyebrow">Spartan Autonomous Robotics Team</span><span class="m-date">Aug 2026 — Present</span></div>
-      <h3>Electrical Co-Lead</h3>
-      <p>Co-lead the electrical subteam for the team's primary quadruped robot. Own schematic capture and ECAD, power distribution, wiring harness design, sensor integration, and firmware bring-up.</p>
-      <ul>
-        <li>Building the team's electrical source of truth: component registry, pinouts, harness documentation, power budget, and smoke-test procedures.</li>
-        <li>Designing a beginner training track and specifying electrical BOMs for recruit mini-project kits.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="m-projects">
-    <h2>Projects</h2>
-    <div class="m-card">
-      <h3>Motor Control System</h3>
-      <span class="m-tag">Analog · ECE 303 · Fall 2025</span>
-      <p>Three-stage closed-loop DC motor controller: 5 kHz 555-timer PWM, RC low-pass conversion to an 800 mV reference, and 741 op-amp current regulation driving a TIP31/TIP32 push-pull stage. Calculated from first principles and verified on the bench.</p>
-    </div>
-    <div class="m-card">
-      <h3>STM32 Environmental Monitor</h3>
-      <span class="m-tag">Embedded · C · STM32F411RE</span>
-      <p>Real-time monitor integrating an MQ135 gas sensor through the 12-bit ADC, DHT22 temperature and humidity over a 1-wire protocol, and an SSD1306 OLED over I2C1.</p>
-    </div>
-    <div class="m-card">
-      <h3>Bare-Metal Arm Cortex-M0+</h3>
-      <span class="m-tag">Firmware · Assembly · ECE 331</span>
-      <p>Programmed an FRDM-KL25Z in Arm Thumb assembly with direct-register GPIO, NVIC interrupt handling, ISR-driven state transitions, and memory-level debugging in Keil µVision.</p>
-    </div>
-    <div class="m-card">
-      <h3>8-Bit Arithmetic Logic Unit</h3>
-      <span class="m-tag">HDL · AMD Xilinx Vivado</span>
-      <p>Designed and implemented an 8-bit ALU in HDL across RTL synthesis, functional simulation, and the FPGA implementation workflow.</p>
-    </div>
-    <div class="m-card">
-      <h3>ShelterMEON</h3>
-      <span class="m-tag">Full-Stack</span>
-      <p>Full-stack emergency shelter-finder built at CalHacks 11.0 using React and Node.js/Express, with voice-to-text search and Google Maps visualization.</p>
-      <a href="https://github.com/MeryemGurbanova/calhacks11" target="_blank" rel="noopener">github ↗</a>
-    </div>
-    <div class="m-card">
-      <h3>Portfolio Site</h3>
-      <span class="m-tag">Web / HTML·CSS·JS</span>
-      <p>Personal portfolio rebuilt as a Three.js Tesla Coil electricity lab — procedural geometry, scroll-driven camera, deployed to GitHub Pages.</p>
-      <a href="https://github.com/rafayetm0rtaza/Rafayets_den" target="_blank" rel="noopener">github ↗</a>
-    </div>
-  </section>
-
-  <section id="m-skills">
-    <h2>Skills</h2>
-    <div class="m-card"><h3>Programming &amp; HDL</h3><p>C · Embedded C · Python · MATLAB · JavaScript · Verilog · VHDL</p></div>
-    <div class="m-card"><h3>EDA &amp; Simulation</h3><p>LTspice · KiCad · Vivado · STM32CubeIDE/CubeMX · Keil µVision</p></div>
-    <div class="m-card"><h3>Analog &amp; Circuit Design</h3><p>Op-amps · BJT output stages · 555 PWM · RC filters · biasing · small-signal analysis</p></div>
-    <div class="m-card"><h3>Embedded &amp; Interfaces</h3><p>Arm Cortex-M0+/M4 · GPIO · NVIC · I2C · SPI · UART · ADC</p></div>
-    <div class="m-card"><h3>Lab Instruments</h3><p>Oscilloscope · function generator · bench supply · digital multimeter</p></div>
-    <div class="m-card"><h3>Software Tools</h3><p>Git · GitHub · Visual Studio Code</p></div>
-  </section>
-
-  <section id="m-experience">
-    <h2>Experience</h2>
-    <div class="m-card">
-      <h3>Electrical Co-Lead</h3>
-      <span class="m-tag">Spartan Autonomous Robotics Team · Aug 2026 — Present</span>
-      <p>Lead electrical architecture and bring-up for the team's quadruped robot platform while building documentation and training systems for new members.</p>
-    </div>
-    <div class="m-card">
-      <h3>Student Research Assistant</h3>
-      <span class="m-tag">UOE · Michigan State · May 2025 — Sep 2025</span>
-      <p>Processed statewide after-school program survey data using Remark and SPSS; prepared stakeholder presentations on program impact.</p>
-    </div>
-    <div class="m-card">
-      <h3>Student Clerical Assistant</h3>
-      <span class="m-tag">Brody / West Circle · MSU · Nov 2022 — Present</span>
-      <p>Process incoming mail, maintain records, and reconcile student accounts for a residence community of several hundred.</p>
-    </div>
-    <div class="m-card">
-      <h3>Data Analysis Intern</h3>
-      <span class="m-tag">HEXA · Jun 2022 — Aug 2022</span>
-      <p>Analyzed learner engagement and content performance data in Excel to support curriculum decisions and founding-team reporting.</p>
-    </div>
-    <div class="m-card">
-      <h3>B.S. Electrical Engineering</h3>
-      <span class="m-tag">Michigan State University · Expected May 2027</span>
-      <p>Dean's List: Fall 2023, Spring 2024, Spring 2025. Member, IEEE Student Branch. Duke of Edinburgh's Award (Bronze &amp; Silver) · Regional Mathematics Olympiad Award · Volunteer educator.</p>
-    </div>
-  </section>
-
-  <section id="m-contact">
-    <h2>Contact</h2>
-    <div class="m-links">
-      <a href="https://github.com/rafayetm0rtaza" target="_blank" rel="noopener" aria-label="Rafayet Murtaza on GitHub">
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.36-3.9-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.29-5.27-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18A10.9 10.9 0 0 1 12 6.12c.98 0 1.96.13 2.88.39 2.19-1.49 3.15-1.18 3.15-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.7 5.39-5.28 5.68.42.36.79 1.06.79 2.14v3.25c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
-        <span><strong>GitHub</strong><small>github.com/rafayetm0rtaza</small></span>
-      </a>
-      <a href="https://www.linkedin.com/in/rafayet-murtaza" target="_blank" rel="noopener" aria-label="Rafayet Murtaza on LinkedIn">
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.99h3.42v1.57h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.42a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.03H3.54V8.99H7.1v11.46Z"/></svg>
-        <span><strong>LinkedIn</strong><small>linkedin.com/in/rafayet-murtaza</small></span>
-      </a>
-      <a href="mailto:murtaza2@msu.edu"><span class="m-link-symbol" aria-hidden="true">@</span><span><strong>Email</strong><small>murtaza2@msu.edu</small></span></a>
-      <a href="tel:+15172146053"><span class="m-link-symbol" aria-hidden="true">↗</span><span><strong>Phone</strong><small>(517) 214-6053</small></span></a>
-    </div>
-    <p class="m-footer">© 2026 Sardar Rafayet Bin Murtaza</p>
-  </section>
-</div>
-
-<script type="module" src="main.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rafayet Murtaza — Electrical Engineering Portfolio</title>
+    <meta
+      name="description"
+      content="Electrical engineering student at Michigan State University. Explore my work in analog circuits, embedded systems, digital hardware, and robotics."
+    />
+    <meta name="theme-color" content="#f6f7f2" />
+    <link
+      rel="canonical"
+      href="https://rafayetm0rtaza.github.io/Rafayets_den/"
+    />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Rafayet Murtaza — Electrical Engineering Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Electrical engineering student at Michigan State University. Explore my work in analog circuits, embedded systems, digital hardware, and robotics."
+    />
+    <meta
+      property="og:url"
+      content="https://rafayetm0rtaza.github.io/Rafayets_den/"
+    />
+    <meta
+      property="og:image"
+      content="https://rafayetm0rtaza.github.io/Rafayets_den/assets/social-preview.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Rafayet Murtaza — Electrical engineering, embedded systems, and robotics."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rafayet Murtaza",
+        "alternateName": "Sardar Rafayet Bin Murtaza",
+        "url": "https://rafayetm0rtaza.github.io/Rafayets_den/",
+        "image": "https://rafayetm0rtaza.github.io/Rafayets_den/assets/portrait.webp",
+        "sameAs": [
+          "https://github.com/rafayetm0rtaza",
+          "https://www.linkedin.com/in/rafayet-murtaza"
+        ],
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "Michigan State University"
+        },
+        "knowsAbout": [
+          "Electrical engineering",
+          "Embedded systems",
+          "Analog circuits",
+          "Robotics"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="wordmark" href="./" aria-label="Rafayet Murtaza, home"
+          ><span class="monogram" aria-hidden="true">rm<span>.</span></span
+          ><span class="wordmark-name">Rafayet Murtaza</span></a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          hidden
+        >
+          Menu <span aria-hidden="true">+</span>
+        </button>
+        <nav id="primary-nav" aria-label="Main navigation">
+          <a href="#projects">Projects</a><a href="#about">About</a
+          ><a href="#experience">Experience</a><a href="#contact">Contact</a
+          ><a class="nav-resume" href="assets/Rafayet_Murtaza_Resume.pdf"
+            >Résumé <span aria-hidden="true">↗</span></a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <div id="top"></div>
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="status-dot"></span> Electrical engineering · Michigan
+            State
+          </p>
+          <h1 id="hero-title">
+            Rafayet<br />
+            Murtaza<span class="accent">.</span>
+          </h1>
+          <p class="hero-statement">
+            From first principles<br />
+            to working systems.
+          </p>
+          <p class="hero-description">
+            I build circuits, write firmware, and connect hardware to the real
+            world. Electrical Engineering student at MSU and Electrical Co-Lead
+            for Spartan Autonomous Robotics.
+          </p>
+          <div class="actions">
+            <a class="button button-primary" href="#projects"
+              >Explore my work <span aria-hidden="true">↘</span></a
+            ><a
+              class="button button-secondary"
+              href="assets/Rafayet_Murtaza_Resume.pdf"
+              download
+              >Download résumé <span aria-hidden="true">↓</span></a
+            >
+          </div>
+          <p class="hero-location">
+            East Lansing, MI <span aria-hidden="true">/</span> B.S. expected May
+            2027
+          </p>
+        </div>
+        <figure class="hero-portrait">
+          <div class="portrait-frame">
+            <img
+              src="assets/portrait.webp"
+              alt="Rafayet Murtaza beside the Chicago River"
+              width="894"
+              height="900"
+              class=""
+              fetchpriority="high"
+            /><span class="portrait-cross cross-top" aria-hidden="true">+</span
+            ><span class="portrait-cross cross-bottom" aria-hidden="true"
+              >+</span
+            >
+          </div>
+          <figcaption>
+            <span>HARDWARE × SOFTWARE</span><span>DESIGN. BUILD. VERIFY.</span>
+          </figcaption>
+        </figure>
+      </section>
+      <div class="focus-strip">
+        <div class="container">
+          <span>Analog &amp; digital circuits</span
+          ><span>Embedded firmware</span><span>Robotics &amp; integration</span>
+        </div>
+      </div>
+      <section
+        class="section container"
+        id="projects"
+        aria-labelledby="projects-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / Selected work</p>
+            <h2 id="projects-title">Engineering in practice.</h2>
+          </div>
+          <p>
+            From the breadboard to the debugger.<br />
+            A closer look at what I’ve built.
+          </p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <a
+              class="project-visual"
+              href="projects/motor-control.html"
+              aria-label="View Closed-loop motor control project"
+              ><img
+                src="assets/motor-control.webp"
+                alt="Breadboard motor controller connected to oscilloscope probes and a DC motor"
+                width="1400"
+                height="1050"
+                class=""
+                loading="lazy"
+                decoding="async"
+              /><span class="project-index" aria-hidden="true">01</span></a
+            >
+            <div class="project-copy">
+              <p class="eyebrow">Analog circuits</p>
+              <h3>
+                <a href="projects/motor-control.html"
+                  >Closed-loop motor control</a
+                >
+              </h3>
+              <p>
+                From a 555-timer PWM signal to a regulated motor current. A
+                three-stage analog controller designed from first principles and
+                verified on the bench.
+              </p>
+              <p class="tech">555 timer · Op-amp · BJT output stage</p>
+              <a class="text-link" href="projects/motor-control.html"
+                >Explore project <span aria-hidden="true">↗</span
+                ><span class="sr-only">: Closed-loop motor control</span></a
+              >
+            </div>
+          </article>
+          <article class="project-card">
+            <a
+              class="project-visual"
+              href="projects/stm32-monitor.html"
+              aria-label="View STM32 environmental monitor project"
+              ><img
+                src="assets/stm32-setup.webp"
+                alt="STM32 Nucleo board wired to an MQ135, DHT22, and OLED display"
+                width="900"
+                height="1200"
+                class="sensor-photo"
+                loading="lazy"
+                decoding="async"
+              /><span class="project-index" aria-hidden="true">02</span></a
+            >
+            <div class="project-copy">
+              <p class="eyebrow">Embedded systems</p>
+              <h3>
+                <a href="projects/stm32-monitor.html"
+                  >STM32 environmental monitor</a
+                >
+              </h3>
+              <p>
+                A complete sensing-to-display pipeline: gas, temperature, and
+                humidity inputs brought together on an Arm Cortex-M4
+                microcontroller.
+              </p>
+              <p class="tech">Embedded C · STM32 · ADC · I2C</p>
+              <a class="text-link" href="projects/stm32-monitor.html"
+                >Explore project <span aria-hidden="true">↗</span
+                ><span class="sr-only">: STM32 environmental monitor</span></a
+              >
+            </div>
+          </article>
+          <article class="project-card">
+            <a
+              class="project-visual"
+              href="projects/bare-metal-arm.html"
+              aria-label="View Bare-metal Arm programming project"
+              ><div class="technical-visual" aria-hidden="true">
+                <span class="diagram-label">INTERRUPT-DRIVEN CONTROL</span>
+                <div class="signal-flow">
+                  <span
+                    >INPUT<br />
+                    <b>GPIO</b></span
+                  ><i>→</i
+                  ><span
+                    >PRIORITY<br />
+                    <b>NVIC</b></span
+                  ><i>→</i
+                  ><span
+                    >HANDLER<br />
+                    <b>ISR</b></span
+                  >
+                </div>
+                <div class="register-line">
+                  SIM_SCGC5 &nbsp; / &nbsp; PCR &nbsp; / &nbsp; PDDR
+                </div>
+                <span class="diagram-caption">Conceptual firmware flow</span>
+              </div>
+              <span class="project-index" aria-hidden="true">03</span></a
+            >
+            <div class="project-copy">
+              <p class="eyebrow">Low-level firmware</p>
+              <h3>
+                <a href="projects/bare-metal-arm.html"
+                  >Bare-metal Arm programming</a
+                >
+              </h3>
+              <p>
+                Working directly with registers, GPIO, and interrupts to connect
+                button inputs to ISR-driven state changes on the FRDM-KL25Z.
+              </p>
+              <p class="tech">Arm Thumb assembly · NVIC · Keil µVision</p>
+              <a class="text-link" href="projects/bare-metal-arm.html"
+                >Explore project <span aria-hidden="true">↗</span
+                ><span class="sr-only">: Bare-metal Arm programming</span></a
+              >
+            </div>
+          </article>
+          <article class="project-card">
+            <a
+              class="project-visual"
+              href="projects/hdl-alu.html"
+              aria-label="View 8-bit arithmetic logic unit project"
+              ><div class="technical-visual alu-visual" aria-hidden="true">
+                <span class="diagram-label"
+                  >DIGITAL LOGIC / 8-BIT DATAPATH</span
+                >
+                <div class="alu-flow">
+                  <span
+                    >A [7:0]<br />
+                    <br />
+                    B [7:0]</span
+                  ><i>→</i><b>ALU</b><i>→</i
+                  ><span
+                    >RESULT<br />
+                    [7:0]</span
+                  >
+                </div>
+                <span class="diagram-caption">Conceptual block diagram</span>
+              </div>
+              <span class="project-index" aria-hidden="true">04</span></a
+            >
+            <div class="project-copy">
+              <p class="eyebrow">Digital hardware</p>
+              <h3>
+                <a href="projects/hdl-alu.html">8-bit arithmetic logic unit</a>
+              </h3>
+              <p>
+                An HDL implementation taken through RTL synthesis, functional
+                simulation, and the FPGA implementation workflow in AMD Xilinx
+                Vivado.
+              </p>
+              <p class="tech">HDL · RTL · Functional simulation</p>
+              <a class="text-link" href="projects/hdl-alu.html"
+                >Explore project <span aria-hidden="true">↗</span
+                ><span class="sr-only">: 8-bit arithmetic logic unit</span></a
+              >
+            </div>
+          </article>
+        </div>
+        <div class="more-work">
+          <p class="eyebrow">Also exploring</p>
+          <a href="https://github.com/MeryemGurbanova/calhacks11"
+            ><span
+              ><strong>ShelterMEON</strong
+              ><small
+                >CalHacks 11.0 · React, Express, voice search &amp; Maps</small
+              ></span
+            ><span aria-hidden="true">↗</span></a
+          ><a href="lab/"
+            ><span
+              ><strong>The Tesla-coil lab</strong
+              ><small
+                >A procedural Three.js experiment in light and
+                electricity</small
+              ></span
+            ><span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </section>
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <div class="container about-grid">
+          <div>
+            <p class="eyebrow">02 / A little context</p>
+            <h2 id="about-title">
+              Curiosity at the<br />
+              circuit level.
+            </h2>
+          </div>
+          <div class="about-copy">
+            <p class="large-copy">
+              I’m an Electrical Engineering student at Michigan State
+              University, interested in the space where circuits, code, and
+              physical systems meet.
+            </p>
+            <p>
+              I enjoy working through the whole process: understanding the
+              theory, choosing components, bringing hardware up, and checking
+              what actually happens on the bench. My projects span analog
+              control loops, microcontroller peripherals, assembly, and digital
+              logic.
+            </p>
+            <div class="education">
+              <span class="education-mark" aria-hidden="true">MSU</span>
+              <div>
+                <h3>B.S. Electrical Engineering</h3>
+                <p>Michigan State University · Expected May 2027</p>
+                <p class="small">
+                  Dean’s List: Fall 2023, Spring 2024, Spring 2025
+                </p>
+              </div>
+            </div>
+            <details>
+              <summary>
+                Coursework &amp; involvement <span aria-hidden="true">+</span>
+              </summary>
+              <div class="details-content">
+                <p>
+                  Electronic circuits, devices, control systems,
+                  microprocessors, signal processing, and electromagnetics. Fall
+                  2026 coursework includes microelectronic fabrication, energy
+                  conversion and power electronics, and computer aided
+                  manufacturing.
+                </p>
+                <p>
+                  IEEE Student Branch member · Duke of Edinburgh’s Award (Bronze
+                  &amp; Silver) · Regional Mathematics Olympiad Award ·
+                  Volunteer educator.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section
+        class="section container"
+        id="experience"
+        aria-labelledby="experience-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">03 / Leadership &amp; experience</p>
+            <h2 id="experience-title">Building with a team.</h2>
+          </div>
+          <p>
+            Technical ownership, clear documentation,<br />
+            and a shared path from idea to hardware.
+          </p>
+        </div>
+        <article class="leadership">
+          <div class="leadership-title">
+            <p class="eyebrow">Current / Aug 2026 — Present</p>
+            <h3>
+              Electrical<br />
+              Co-Lead
+            </h3>
+            <p>
+              Spartan Autonomous<br />
+              Robotics Team · MSU
+            </p>
+            <span class="role-tag">Quadruped robot platform</span>
+          </div>
+          <div class="leadership-body">
+            <p class="large-copy">
+              Helping turn a quadruped robot’s electrical architecture into a
+              system the whole team can build on.
+            </p>
+            <ul class="contribution-list">
+              <li>
+                <strong>Hardware &amp; bring-up</strong
+                ><span
+                  >Co-lead schematic capture, ECAD, power distribution, wiring
+                  harnesses, sensor integration, and firmware bring-up.</span
+                >
+              </li>
+              <li>
+                <strong>Documentation that lasts</strong
+                ><span
+                  >Establishing a component registry, pinouts, power budget,
+                  harness documentation, and smoke-test procedures.</span
+                >
+              </li>
+              <li>
+                <strong>A starting point for new builders</strong
+                ><span
+                  >Designing a beginner electrical training track and specifying
+                  BOMs for recruit mini-project kits.</span
+                >
+              </li>
+            </ul>
+          </div>
+        </article>
+        <div class="timeline">
+          <article>
+            <p class="timeline-date">Nov 2022 — Present</p>
+            <div>
+              <h3>Student Clerical Assistant</h3>
+              <p class="organization">
+                Brody / West Circle Residence Halls · MSU
+              </p>
+              <p>
+                Process incoming mail, maintain records, and reconcile student
+                accounts for a residence community of several hundred.
+              </p>
+            </div>
+          </article>
+          <article>
+            <p class="timeline-date">May — Sep 2025</p>
+            <div>
+              <h3>Student Research Assistant</h3>
+              <p class="organization">
+                University Outreach and Engagement · MSU
+              </p>
+              <p>
+                Processed statewide after-school program survey data using
+                Remark and SPSS; prepared stakeholder presentations on program
+                impact.
+              </p>
+            </div>
+          </article>
+          <article>
+            <p class="timeline-date">Jun — Aug 2022</p>
+            <div>
+              <h3>Data Analysis Intern</h3>
+              <p class="organization">HEXA · EdTech startup</p>
+              <p>
+                Analyzed learner engagement and content performance data in
+                Excel to support curriculum decisions and founding-team
+                reporting.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section
+        class="skills-section"
+        id="skills"
+        aria-labelledby="skills-title"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">04 / Technical toolkit</p>
+              <h2 id="skills-title">Tools behind the work.</h2>
+            </div>
+            <p>
+              Across design, implementation,<br />
+              and bench verification.
+            </p>
+          </div>
+          <div class="skills-grid">
+            <div class="skill">
+              <span class="skill-number">01</span>
+              <h3>Programming & HDL</h3>
+              <p>
+                C · Embedded C · Python · MATLAB · JavaScript · Verilog · VHDL
+              </p>
+            </div>
+            <div class="skill">
+              <span class="skill-number">02</span>
+              <h3>Design & simulation</h3>
+              <p>
+                LTspice · KiCad · Vivado · STM32CubeIDE / CubeMX · Keil µVision
+              </p>
+            </div>
+            <div class="skill">
+              <span class="skill-number">03</span>
+              <h3>Analog circuits</h3>
+              <p>
+                Op-amps · BJT output stages · 555 PWM · RC filters · Biasing &
+                small-signal analysis
+              </p>
+            </div>
+            <div class="skill">
+              <span class="skill-number">04</span>
+              <h3>Embedded interfaces</h3>
+              <p>Arm Cortex-M0+ / M4 · GPIO · NVIC · I2C · SPI · UART · ADC</p>
+            </div>
+            <div class="skill">
+              <span class="skill-number">05</span>
+              <h3>At the bench</h3>
+              <p>
+                Oscilloscope · Function generator · Benchtop supply · Digital
+                multimeter
+              </p>
+            </div>
+            <div class="skill">
+              <span class="skill-number">06</span>
+              <h3>Development workflow</h3>
+              <p>
+                Git · GitHub · Visual Studio Code · Hardware bring-up ·
+                Technical documentation
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="contact-section"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="container contact-grid">
+          <div>
+            <p class="eyebrow">05 / Get in touch</p>
+            <h2 id="contact-title">
+              Let’s build<br />
+              something useful.
+            </h2>
+            <p>
+              Have an engineering opportunity, a project, or a question about my
+              work? I’d like to hear from you.
+            </p>
+            <a class="contact-email" href="mailto:murtaza2@msu.edu"
+              >murtaza2@msu.edu <span aria-hidden="true">↗</span></a
+            >
+          </div>
+          <div class="contact-links">
+            <a href="assets/Rafayet_Murtaza_Resume.pdf" download
+              ><span
+                >Download résumé<small
+                  >PDF · Education, projects &amp; experience</small
+                ></span
+              ><span aria-hidden="true">↓</span></a
+            ><a href="https://www.linkedin.com/in/rafayet-murtaza"
+              ><span>LinkedIn<small>Connect professionally</small></span
+              ><span aria-hidden="true">↗</span></a
+            ><a href="https://github.com/rafayetm0rtaza"
+              ><span>GitHub<small>Explore the source</small></span
+              ><span aria-hidden="true">↗</span></a
+            ><a href="tel:+15172146053"
+              ><span>(517) 214-6053<small>East Lansing, Michigan</small></span
+              ><span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer container">
+      <p>© <span data-year>2026</span> Rafayet Murtaza</p>
+      <div>
+        <a href="https://github.com/rafayetm0rtaza">GitHub</a
+        ><a href="https://www.linkedin.com/in/rafayet-murtaza">LinkedIn</a
+        ><a href="lab/">3D lab <span aria-hidden="true">↗</span></a
+        ><a href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
 </html>

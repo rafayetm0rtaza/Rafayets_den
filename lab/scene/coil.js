@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { smoothstep } from '../utils/scroll.js';
+const smoothstep = (min, max, value) => THREE.MathUtils.smoothstep(value, min, max);
 
 class HelixCurve extends THREE.Curve {
   constructor(radius, yStart, height, turns) {

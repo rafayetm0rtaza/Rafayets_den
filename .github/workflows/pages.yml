@@ -1,19 +1,15 @@
 name: Deploy to GitHub Pages
-
 on:
   push:
-    branches: ["main"]
+    branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
-
 jobs:
   deploy:
     environment:
@@ -23,14 +19,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: false
+      - name: Validate site
+        run: |
+          python3 scripts/check_site.py
+          node --check main.js
+          node --check lab/lab.js
+      - name: Package public files
+        run: |
+          mkdir _site
+          cp index.html 404.html style.css main.js sitemap.xml .nojekyll _site/
+          cp -R assets projects lab _site/
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
-      - name: Deploy to GitHub Pages
+          path: _site
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4

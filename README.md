@@ -1,46 +1,44 @@
-# Rafayet's Den
+# Rafayet Murtaza — Engineering Portfolio
 
-A personal portfolio site for Rafayet Murtaza, built as an interactive Three.js Tesla-coil experience and deployed with GitHub Pages.
+A responsive portfolio focused on electrical engineering, embedded systems, and robotics.
 
-Live site: <https://rafayetm0rtaza.github.io/Rafayets_den/>
+**Live:** https://rafayetm0rtaza.github.io/Rafayets_den/
 
-## Stack
+## Structure
 
-- HTML, CSS, and JavaScript modules
-- [Three.js](https://threejs.org/) for the interactive 3D scene
-- Google Fonts (Space Grotesk)
-- GitHub Pages with GitHub Actions for deployment
+- `index.html`: semantic, accessible portfolio content for every screen size
+- `style.css`: responsive layout, print styles, and reduced-motion support
+- `main.js`: optional mobile navigation and legacy-anchor compatibility
+- `projects/`: static project notes and links to available source code
+- `assets/`: optimized project photos, portrait, social preview, and downloadable résumé
+- `lab/`: optional Three.js Tesla-coil experiment; graphics load only after the visitor starts it
+- `scripts/check_site.py`: internal-link, metadata, and asset validation
+- `.github/workflows/pages.yml`: validate, package, and deploy to GitHub Pages
 
-## Highlights
+## Local preview
 
-- Procedural Tesla coil, lightning, and particle effects
-- Scroll-driven desktop camera and section transitions
-- Interactive project and contact links
-- Responsive mobile layout with HTML content
-
-## Project structure
-
-```text
-.
-├── index.html          # Page structure and mobile content
-├── style.css           # Site styles
-├── main.js             # Scene setup and render loop
-├── scene/              # Coil, lightning, particles, and camera
-├── sections/           # 3D portfolio sections
-├── utils/              # Shared text, scroll, and responsive helpers
-└── .github/workflows/  # GitHub Pages deployment
-```
-
-## Run locally
-
-Because the site uses ES modules, serve the repository with a local HTTP server rather than opening `index.html` directly. For example:
-
-```bash
+```sh
 python3 -m http.server 8000
 ```
 
-Then open <http://localhost:8000>.
+Open http://localhost:8000. There is no build step or package installation. The primary portfolio and project pages work without JavaScript or third-party requests. Only the optional lab uses Three.js from jsDelivr.
+
+## Verify
+
+```sh
+python3 scripts/check_site.py
+node --check main.js
+node --check lab/lab.js
+```
+
+Before publishing, check navigation and project pages at phone, tablet, and desktop widths, keyboard navigation, résumé download, and the lab start/pause controls. Confirm that the main page remains readable with JavaScript disabled.
+
+## Updating content
+
+Edit the static HTML directly. Keep project summaries consistent between the homepage and corresponding project pages. Replace `assets/Rafayet_Murtaza_Resume.pdf` to update the résumé. Update `sitemap.xml` when adding pages. `assets/social-preview.png` is used for social links.
+
+Project text is based on the supplied résumé and public project documentation. Photos were recovered from this repository's history or the public STM32 project repository. Conceptual diagrams are labeled as such; they are not presented as measured results or circuit schematics.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+See [LICENSE](LICENSE).
